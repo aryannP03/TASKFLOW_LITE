@@ -2,18 +2,12 @@ import React from "react";
 
 function TaskCard({ task }) {
   return (
-    <div
-      style={{
-        border: "1px solid #ccc",
-        padding: "8px",
-        marginBottom: "8px",
-        borderRadius: "4px",
-      }}
+    <div className="task-card"
     >
-      <h4>{task.title}</h4>
-      <p>Priority: {task.priority}</p>
-      <p>Due Date: {task.dueDate}</p>
-      <p>Assignee: {task.assignee}</p>
+      <h4 className="task-title">{task.title}</h4>
+      <p className={`priority ${task.priority}`}>Priority: {task.priority}</p>
+      <p className="due-date">Due Date: {task.dueDate}</p>
+      <p className="assignee">Assignee: {task.assignee}</p>
     </div>
   );
 }
