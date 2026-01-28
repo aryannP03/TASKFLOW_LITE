@@ -1,19 +1,25 @@
 import React from "react";
+import { useDraggable } from "@dnd-kit/core"
+
 
 function TaskCard({ task }) {
+
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: task.id,
+  })
+
   return (
     <div
-      style={{
-        border: "1px solid #ccc",
-        padding: "8px",
-        marginBottom: "8px",
-        borderRadius: "4px",
-      }}
+      ref={setNodeRef}
+      // style={style}
+      {...listeners}
+      {...attributes}
+      className="task-card"
     >
-      <h4>{task.title}</h4>
-      <p>Priority: {task.priority}</p>
-      <p>Due Date: {task.dueDate}</p>
-      <p>Assignee: {task.assignee}</p>
+      <h4 className="task-title">{task.title}</h4>
+      <p className={`priority ${task.priority}`}>Priority: {task.priority}</p>
+      <p className="due-date">Due Date: {task.dueDate}</p>
+      <p className="assignee">Assignee: {task.assignee}</p>
     </div>
   );
 }

@@ -4,12 +4,10 @@ import Dashboard from "./features/dashboard/Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoutes from './utils/ProtectedRoutes';
 import LoginPage from './components/Login';
-import { AuthProvider } from './context/AuthContext';
 
 
 function App() {
   return (
-    <AuthProvider>
     <Routes>
       <Route path="/login" 
       element={<LoginPage />} />
@@ -22,7 +20,6 @@ function App() {
 
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
-    </AuthProvider>
   )
 }
 
