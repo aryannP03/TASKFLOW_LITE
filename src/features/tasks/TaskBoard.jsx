@@ -18,10 +18,10 @@ function TaskBoard({ tasks }) {
   );
 
   return (
-    <div style={{ display: "flex", gap: "16px" }}>
-      <TaskColumn title="To Do" tasks={todoTasks} />
-      <TaskColumn title="In Progress" tasks={inProgressTasks} />
-      <TaskColumn title="Done" tasks={doneTasks} />
+    <div className="board">
+      <TaskColumn title="To Do" tasks={todoTasks} type="todo" />
+      <TaskColumn title="In Progress" tasks={inProgressTasks} type="progresss"/>
+      <TaskColumn title="Done" tasks={doneTasks} type="done"/>
     </div>
   );
 }
