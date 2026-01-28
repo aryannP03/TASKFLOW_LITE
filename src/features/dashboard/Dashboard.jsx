@@ -10,7 +10,7 @@ import TaskForm from "../tasks/TaskForm";
 function Dashboard() {
   const { logout } = useAuth();
   const navigate = useNavigate();
-  const { tasks, loading, error, addTask } = useTasks();
+  const { tasks, loading, error, addTask, setTasks } = useTasks();
   const [showPopup, setShowPopup] = useState(false);
 
   const handleLogout = () => {
@@ -53,7 +53,7 @@ function Dashboard() {
           )}
 
           {!loading && !error && tasks.length > 0 && (
-            <TaskBoard tasks={tasks} />
+            <TaskBoard tasks={tasks} setTasks={setTasks} />
           )}
 
           {showPopup && (

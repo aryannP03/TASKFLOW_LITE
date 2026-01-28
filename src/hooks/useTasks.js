@@ -34,10 +34,14 @@ export function useTasks() {
   const addTask = async (task) => {
     try{
       const response = await fetch(API_URL, {
-        method:"POST",
-        "Content-Type": "json",
-        body: JSON.stringify(task),
-      })
+        
+          method:"POST",
+          headers: {
+            "Content-Type": "json",
+          },
+          body: JSON.stringify(task),
+        }
+      )
 
       if(!response.ok) {
         throw Error("Failed to add task")
@@ -45,7 +49,7 @@ export function useTasks() {
 
       const newTask = await response.json()
 
-      setTasks((prev) => [...tasks, newTask])
+      setTasks((prev) => [...prev, newTask])
     } catch (err) {
       setError(err.message || "Something went wrong")
     }
@@ -55,5 +59,6 @@ export function useTasks() {
     loading,
     error,
     addTask,
+    setTasks,
   };
 }

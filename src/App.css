@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.task-card{
+  cursor: grab
+}
+
 body {
   margin: 0;
   background: #f5f7fb;
@@ -61,19 +65,32 @@ body {
 
 .board {
   display: flex;
-  gap: 28px;
   justify-content: center;
-  align-items: flex-start;
+  gap: 32px;
+  margin-top: 40px;
   width: 100%;
-  margin-top: 32px;
+
 }
 
 .column {
-  width: 320px;
+  width: 260px;
+  min-height: 420px;
   background: #ffffff;
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 2px dashed #d0d7e2;
+  border-radius: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.column.todo {
+  border-color: #3b82f6;
+}
+
+.column.progress {
+  border-color: #f59e0b;
+}
+
+.column.done {
+  border-color: #10b981;
 }
 
 .column h2 {
@@ -84,14 +101,22 @@ body {
 
 .column.todo h2 {
   color: #f59e0b;
+  background-color: #10b981;
+  border-color: #3b82f6;
+
 }
 
 .column.progress h2 {
   color: #3b82f6;
+  background-color: #10b981;
+  border-color: #f59e0b;
 }
 
 .column.done h2 {
   color: #10b981;
+  background-color: #10b981;
+  border-color: #10b981;
+
 }
 
 .empty-text {
