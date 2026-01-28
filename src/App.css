@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+.add-task-head{
+  color: #212121
+}
+.error-text{
+  color: red
+}
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -9,12 +9,12 @@ function TaskForm({ onSubmit }) {
   } = useForm();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h3>Add Task</h3>
+    <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
+      <h3 className="add-task-head">Add Task</h3>
 
       <label>Title</label>
       <input {...register("title", { required: "Title is required" })} />
-      {errors.title && <p>{errors.title.message}</p>}
+      {errors.title && <p className="error-text">{errors.title.message}</p>}
 
       <label>Priority</label>
       <select {...register("priority")}>
@@ -32,7 +32,7 @@ function TaskForm({ onSubmit }) {
             "Due date cannot be in the past",
         })}
       />
-      {errors.dueDate && <p>{errors.dueDate.message}</p>}
+      {errors.dueDate && <p className="error-text">{errors.dueDate.message}</p>}
 
       <button type="submit">Add Task</button>
     </form>
