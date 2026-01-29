@@ -15,7 +15,7 @@ function TaskPopup({ onClose, children }) {
     >
       <div style={{ background: "#fff", padding: "20px", width: "400px" }}>
         <button onClick={onClose} style={{ float: "right" }}>
-          ✕
+          x
         </button>
         {children}
       </div>
