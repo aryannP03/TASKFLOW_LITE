@@ -21,7 +21,7 @@
       "title": "task2",
       "priority": "medium",
       "dueDate": "2026-01-31",
-      "status": "progress",
+      "status": "done",
       "assignee": "Aryan"
     },
     {
@@ -29,7 +29,7 @@
       "title": "task3",
       "priority": "low",
       "dueDate": "2026-02-17",
-      "status": "done",
+      "status": "progress",
       "assignee": "Aryan"
     },
     {
@@ -44,6 +44,14 @@
       "id": "1626",
       "title": "task4",
       "priority": "high",
+      "dueDate": "2026-01-30",
+      "status": "progress",
+      "assignee": "Aryan"
+    },
+    {
+      "id": "2530",
+      "title": "task5",
+      "priority": "medium",
       "dueDate": "2026-01-30",
       "status": "todo",
       "assignee": "Aryan"

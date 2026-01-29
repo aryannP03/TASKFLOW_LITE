@@ -1,12 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-function TaskForm({ onSubmit }) {
+function TaskForm({ onSubmit = () =>  {}}) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({defaultValues: {title: "heading"}});
 
   return (
     <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
