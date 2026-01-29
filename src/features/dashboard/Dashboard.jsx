@@ -5,6 +5,7 @@ import { useTasks } from "../../hooks/useTasks";
 import TaskBoard from "../tasks/TaskBoard";
 import TaskPopup from "../../components/TaskPopup";
 import TaskForm from "../tasks/TaskForm";
+import Searchtask from "../../components/Search";
 
 
 function Dashboard() {
@@ -40,6 +41,8 @@ function Dashboard() {
             + Add Task
           </button>
         </div>
+
+        <div><Searchtask tasks={tasks}/></div>
 
         <div>
           <h2>My Tasks</h2>

@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "create dashboard",
-      "status": "progress",
+      "status": "done",
       "priority": "high",
       "dueDate": "2026-02-01",
       "assignee": "Aryan"
@@ -29,7 +29,7 @@
       "title": "task3",
       "priority": "low",
       "dueDate": "2026-02-17",
-      "status": "todo",
+      "status": "done",
       "assignee": "Aryan"
     },
     {
@@ -37,7 +37,7 @@
       "title": "task4",
       "priority": "medium",
       "dueDate": "2026-03-18",
-      "status": "done",
+      "status": "todo",
       "assignee": "Aryan"
     },
     {
