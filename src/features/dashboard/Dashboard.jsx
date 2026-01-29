@@ -7,13 +7,21 @@ import TaskPopup from "../../components/TaskPopup";
 import TaskForm from "../tasks/TaskForm";
 import Searchtask from "../../components/Search";
 import Filter from "../../components/Filter";
-
+import useDebounce from "../../hooks/useDebounce";
+import useTaskFilter from "../../hooks/useTaskFilter";
 
 function Dashboard() {
   const { logout } = useAuth();
   const navigate = useNavigate();
   const { tasks, loading, error, addTask, setTasks } = useTasks();
   const [showPopup, setShowPopup] = useState(false);
+
+  const [priority, setPriority] = useState("")
+  const [searchvalue, setSearchValue] = useState("")
+
+  const debouncedSearch = useDebounce(searchvalue, 1500)
+
+  const { filteredTasks } = useTaskFilter(tasks, debouncedSearch, priority)
 
   const handleLogout = () => {
     logout();
@@ -43,9 +51,9 @@ function Dashboard() {
           </button>
         </div>
 
-        <div><Searchtask tasks={tasks}/></div>
+        <div><Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/></div>
 
-        <div ><Filter tasks={tasks}/></div>
+        <div ><Filter priority={priority} setPriority={setPriority}/></div>
 
         <div>
           <h2>My Tasks</h2>
@@ -58,8 +66,10 @@ function Dashboard() {
             <p>No tasks found.</p>
           )}
 
+          {/* {console.log("filtered tasks are :", filteredTasks)} */}
+          
           {!loading && !error && tasks.length > 0 && (
-            <TaskBoard tasks={tasks} setTasks={setTasks} />
+            <TaskBoard tasks={filteredTasks} setTasks={setTasks} />
           )}
 
           {showPopup && (

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function useTaskFilter(tasks, searchValue, priority) {
   const [searchedTask, setSearchedTask] = useState(null);
-  const [filteredTask, setFilteredTasks] = useState([])
+  const [filteredTasks, setFilteredTasks] = useState([])
 
   useEffect(() => {
     if (!searchValue) {
@@ -18,18 +18,21 @@ function useTaskFilter(tasks, searchValue, priority) {
   }, [tasks, searchValue]);
 
   useEffect(() => {
+    let result = tasks 
     
-    if (!priority) {
-      setFilteredTasks(tasks);
-      return;
+    if(priority && priority !== "all") {
+    result = tasks.filter(task => task.priority === priority);
+    }
+    
+    if(searchValue) {
+    result = result.filter(task => task.title.toLowerCase().includes(searchValue.toLowerCase()))
     }
 
-    const result = tasks.filter(task => task.priority === priority);
-    setFilteredTasks(result);
+    setFilteredTasks(result)
+    },[tasks, priority, searchValue])
 
-  }, [tasks, priority]);
 
-  return { searchedTask, filteredTask }
+  return { searchedTask, filteredTasks }
 }
 
 export default useTaskFilter;
