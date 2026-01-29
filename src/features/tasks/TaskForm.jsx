@@ -1,16 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 
-function TaskForm({ onSubmit = () =>  {}}) {
+function TaskForm({ onSubmit, initialData = {}}) {
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({defaultValues: {title: "heading"}});
+    reset,
+  } = useForm({defaultValues: {
+                title: "",
+                priority: "low",
+                dueDate: "",
+                assignee: "",
+              },
+  });
+
+  useEffect(() => {
+    if (initialData && Object.keys(initialData).length > 0) {
+      reset(initialData)
+    }
+  }, [initialData, reset])
+  
+  
 
   return (
     <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
-      <h3 className="add-task-head">Add Task</h3>
+      <h3 className="add-task-head">
+        {initialData?.id? "Edit task": "Add task"}
+      </h3>
 
       <label>Title</label>
       <input {...register("title", { required: "Title is required" })} />
@@ -34,9 +52,9 @@ function TaskForm({ onSubmit = () =>  {}}) {
       />
       {errors.dueDate && <p className="error-text">{errors.dueDate.message}</p>}
 
-      <button type="submit">Add Task</button>
+      <button type="submit"> { initialData?.id? "Update Task" : "Add Task" } </button>
     </form>
-  );
+  )
 }
 
 export default TaskForm;
