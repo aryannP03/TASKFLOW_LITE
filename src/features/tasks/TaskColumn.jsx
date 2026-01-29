@@ -14,7 +14,7 @@ function TaskColumn({ title, tasks, type }) {
       {tasks.length === 0 && <p className="empty-text">No tasks</p>}
 
       {tasks.map((task) => (
-        <TaskCard key={task.id} task={task} />                 
+        <TaskCard key={task.id} task={task} />               
       ))}
     </div>
   );

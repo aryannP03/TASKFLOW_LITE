@@ -6,6 +6,7 @@ import TaskBoard from "../tasks/TaskBoard";
 import TaskPopup from "../../components/TaskPopup";
 import TaskForm from "../tasks/TaskForm";
 import Searchtask from "../../components/Search";
+import Filter from "../../components/Filter";
 
 
 function Dashboard() {
@@ -43,6 +44,8 @@ function Dashboard() {
         </div>
 
         <div><Searchtask tasks={tasks}/></div>
+
+        <div ><Filter tasks={tasks}/></div>
 
         <div>
           <h2>My Tasks</h2>
