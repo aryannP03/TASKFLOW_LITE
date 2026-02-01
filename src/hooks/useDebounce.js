@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-function useDebounce(value, delay) {
+function useDebounce(value, delay, minCharVal) {
     // console.log(value.length);
     
     const [ debouncedValue, setDebouncedValue ] = useState(value || "")
     useEffect( () => {
-        if(value.length>=5) {
+        // if(value.length>=5) 
+        if(value.length>=minCharVal || value === ""){
             const timerId = setTimeout( () => {
                 setDebouncedValue(value)
                 }, delay)

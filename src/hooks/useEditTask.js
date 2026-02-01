@@ -5,14 +5,14 @@ function UseEditTask(setTasks) {
     const editTask = async (taskId, updatedData) => {
         setTasks(prev =>
             prev.map(task => 
-                taskId.id === taskId ? {...task, ...updatedData} : task
+                task.id === taskId ? {...task, ...updatedData} : task
             )
         )
         
     try{
         await fetch(`http://localhost:3000/tasks/${taskId}`, {
             method: "PATCH",
-            header: {
+            headers: {
                 "Content-Type": "json",
             },
             body: JSON.stringify(updatedData),

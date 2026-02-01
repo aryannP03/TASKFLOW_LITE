@@ -1,8 +1,12 @@
 import React, { useMemo } from "react";
 import TaskColumn from "./TaskColumn";
 import {DndContext} from '@dnd-kit/core'
+import { useDispatch } from "react-redux";
+import { editTask } from "./tasksSlice";
 
-function TaskBoard({ tasks, setTasks }) {
+function TaskBoard({ tasks }) {
+
+  const dispatch = useDispatch()
 
   const todoTasks = useMemo(
     () => tasks.filter((task) => task.status === "todo"),
@@ -24,35 +28,22 @@ function TaskBoard({ tasks, setTasks }) {
     if(!over) return
 
     const newStatus = over.id
-    console.log("Dragged to:",over.id);
+    // console.log("Dragged to:",over.id);
     
 
-    setTasks(prev =>
-      prev.map(task => 
-        (task.id === active.id) ? {...task, status: over.id} : task
-      )
-    
-    )
+    dispatch(editTask({
+      id: active.id,
+      updatedData: {status: newStatus},
 
-    try{
-      await fetch(`http://localhost:3000/tasks/${active.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "json",
-        },
-        body: JSON.stringify({ status: newStatus }),
-      })
-    }catch(err) {
-      console.error("Failed to update task", err)
-    }
-  }
+    }))
+
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <div className="board">
-          <TaskColumn title="To Do" tasks={todoTasks} type="todo" />
-          <TaskColumn title="In Progress" tasks={inProgressTasks} type="progress"/>
-          <TaskColumn title="Done" tasks={doneTasks} type="done"/>
+          <TaskColumn title="To Do" tasks={todoTasks} setTasks={setTasks} type="todo" />
+          <TaskColumn title="In Progress" tasks={inProgressTasks} setTasks={setTasks} type="progress"/>
+          <TaskColumn title="Done" tasks={doneTasks} setTasks={setTasks} type="done"/>
       </div>
     </DndContext>
   );

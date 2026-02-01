@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { useTasks } from "../../hooks/useTasks";
+// import { useTasks } from "../../hooks/useTasks";
 import TaskBoard from "../tasks/TaskBoard";
 import TaskPopup from "../../components/TaskPopup";
 import TaskForm from "../tasks/TaskForm";
@@ -9,17 +9,27 @@ import Searchtask from "../../components/Search";
 import Filter from "../../components/Filter";
 import useDebounce from "../../hooks/useDebounce";
 import useTaskFilter from "../../hooks/useTaskFilter";
+import { useDispatch, useSelector} from "react-redux"
+import { fetchTasks, addTask } from "../tasks/tasksSlice";
 
 function Dashboard() {
+
+  
+  const { tasks, loading, error } = useSelector((state) => state.tasks)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchTasks())
+  }, [dispatch])
+
   const { logout } = useAuth();
   const navigate = useNavigate();
-  const { tasks, loading, error, addTask, setTasks } = useTasks();
+  // const { tasks, loading, error, addTask, setTasks } = useTasks();
   const [showPopup, setShowPopup] = useState(false);
 
   const [priority, setPriority] = useState("")
   const [searchvalue, setSearchValue] = useState("")
 
-  const debouncedSearch = useDebounce(searchvalue, 1500)
+  const debouncedSearch = useDebounce(searchvalue, 1500, 5)
 
   const { filteredTasks } = useTaskFilter(tasks, debouncedSearch, priority)
 
@@ -29,11 +39,11 @@ function Dashboard() {
   }
 
   const handleAddTask = (data) => {
-    addTask({
+    dispatch(addTask({
       ...data,
       status: "todo",
       assignee: "Aryan"
-    })
+    }))
     setShowPopup(false)
   }
 
@@ -69,7 +79,7 @@ function Dashboard() {
           {/* {console.log("filtered tasks are :", filteredTasks)} */}
           
           {!loading && !error && tasks.length > 0 && (
-            <TaskBoard tasks={filteredTasks} setTasks={setTasks} />
+            <TaskBoard tasks={filteredTasks} />
           )}
 
           {showPopup && (
