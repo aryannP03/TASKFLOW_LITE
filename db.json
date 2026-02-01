@@ -2,8 +2,8 @@
   "tasks": [
     {
       "id": "1",
-      "title": "create dashboard",
-      "status": "progress",
+      "title": "task6",
+      "status": "done",
       "priority": "high",
       "dueDate": "2026-02-01",
       "assignee": "Aryan"
@@ -21,7 +21,7 @@
       "title": "task2",
       "priority": "medium",
       "dueDate": "2026-01-31",
-      "status": "done",
+      "status": "todo",
       "assignee": "Aryan"
     },
     {
@@ -29,16 +29,40 @@
       "title": "task3",
       "priority": "low",
       "dueDate": "2026-02-17",
-      "status": "todo",
+      "status": "progress",
       "assignee": "Aryan"
     },
     {
       "id": "33b0",
-      "title": "task4",
-      "priority": "medium",
+      "title": "task1",
+      "priority": "low",
       "dueDate": "2026-03-18",
-      "status": "todo",
+      "status": "progress",
       "assignee": "Aryan"
+    },
+    {
+      "id": "1626",
+      "title": "task4",
+      "priority": "high",
+      "dueDate": "2026-01-30",
+      "status": "progress",
+      "assignee": "Aryan"
+    },
+    {
+      "id": "2530",
+      "title": "task5",
+      "priority": "medium",
+      "dueDate": "2026-01-30",
+      "status": "done",
+      "assignee": "Aryan"
+    },
+    {
+      "id": "ba35",
+      "title": "task7",
+      "priority": "high",
+      "dueDate": "2026-02-02",
+      "assignee": "Aryan",
+      "status": "todo"
     }
   ]
 }

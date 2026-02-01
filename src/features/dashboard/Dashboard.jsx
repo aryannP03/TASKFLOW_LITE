@@ -1,17 +1,38 @@
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { useTasks } from "../../hooks/useTasks";
+// import { useTasks } from "../../hooks/useTasks";
 import TaskBoard from "../tasks/TaskBoard";
 import TaskPopup from "../../components/TaskPopup";
 import TaskForm from "../tasks/TaskForm";
-
+import Searchtask from "../../components/Search";
+import Filter from "../../components/Filter";
+import useDebounce from "../../hooks/useDebounce";
+import useTaskFilter from "../../hooks/useTaskFilter";
+import { useDispatch, useSelector} from "react-redux"
+import { fetchTasks, addTask } from "../tasks/tasksSlice";
+import Header from "../../components/header/Header";
 
 function Dashboard() {
+
+  
+  const { tasks, loading, error } = useSelector((state) => state.tasks)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchTasks())
+  }, [dispatch])
+
   const { logout } = useAuth();
   const navigate = useNavigate();
-  const { tasks, loading, error, addTask, setTasks } = useTasks();
+  // const { tasks, loading, error, addTask, setTasks } = useTasks();
   const [showPopup, setShowPopup] = useState(false);
+
+  const [priority, setPriority] = useState("")
+  const [searchvalue, setSearchValue] = useState("")
+
+  const debouncedSearch = useDebounce(searchvalue, 1500, 5)
+
+  const { filteredTasks } = useTaskFilter(tasks, debouncedSearch, priority)
 
   const handleLogout = () => {
     logout();
@@ -19,27 +40,29 @@ function Dashboard() {
   }
 
   const handleAddTask = (data) => {
-    addTask({
+    dispatch(addTask({
       ...data,
       status: "todo",
       assignee: "Aryan"
-    })
+    }))
     setShowPopup(false)
   }
 
   return (
     <div className="dashboard">
       <div className="dashboard-container">
-        <header className="dashboard-title">
-          <h1>TaskFlow Lite</h1>
-          <button className="logout-btn"onClick={handleLogout}>Logout</button>
-        </header>
+        
+        <Header />
 
         <div style={{ margin: "16px 0" }}>
           <button className="add-task-btn" onClick={() => setShowPopup(true)}>
             + Add Task
           </button>
         </div>
+
+        <div><Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/></div>
+
+        <div ><Filter priority={priority} setPriority={setPriority}/></div>
 
         <div>
           <h2>My Tasks</h2>
@@ -52,8 +75,10 @@ function Dashboard() {
             <p>No tasks found.</p>
           )}
 
+          {/* {console.log("filtered tasks are :", filteredTasks)} */}
+          
           {!loading && !error && tasks.length > 0 && (
-            <TaskBoard tasks={tasks} setTasks={setTasks} />
+            <TaskBoard tasks={filteredTasks} />
           )}
 
           {showPopup && (

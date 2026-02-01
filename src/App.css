@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box;
 }
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
 
 .task-card{
   cursor: grab
@@ -25,11 +30,6 @@ body {
   padding: 0 32px;
 }
 
-.dashboard-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 28px;
-}
 
 .logout-btn {
   position: fixed;
@@ -64,15 +64,45 @@ body {
 }
 
 .board {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin-top: 40px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;            
+  margin-top: 1.5rem;
 
 }
 
-.column {
+.columntodo,
+.columnprogress,
+.columndone {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 420px;
+}
+
+.columntodo {
+  border-top: 4px solid #3b82f6;   /* blue */
+}
+
+.columnprogress {
+  border-top: 4px solid #f59e0b;   /* amber */
+}
+
+.columndone {
+  border-top: 4px solid #10b981;   /* green */
+}
+
+.columntodo h3,
+.columnprogress h3,
+.columndone h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* .column {
   width: 260px;
   min-height: 420px;
   background: #ffffff;
@@ -80,44 +110,8 @@ body {
   border-radius: 12px;
   padding: 16px;
   box-sizing: border-box;
-}
-.column.todo {
-  border-color: #3b82f6;
-}
+} */
 
-.column.progress {
-  border-color: #f59e0b;
-}
-
-.column.done {
-  border-color: #10b981;
-}
-
-.column h2 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.column.todo h2 {
-  color: #f59e0b;
-  background-color: #10b981;
-  border-color: #3b82f6;
-
-}
-
-.column.progress h2 {
-  color: #3b82f6;
-  background-color: #10b981;
-  border-color: #f59e0b;
-}
-
-.column.done h2 {
-  color: #10b981;
-  background-color: #10b981;
-  border-color: #10b981;
-
-}
 
 .empty-text {
   color: #9ca3af;
@@ -173,75 +167,72 @@ body {
 
 @media (max-width: 900px) {
   .board {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .column {
-    width: 100%;
+    grid-template-columns: 1fr;
   }
 }
 
-
-
-
-/* @media (max-width: 900px) {
-  .board {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .column {
-    width: 90%;
-  }
+form {
+  width: 360px;
+  margin: 120px auto;
+  padding: 28px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+form label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
 }
 
-.add-task-head{
-  color: #212121
-}
-.error-text{
-  color: red
-}
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+form input[type="text"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  outline: none;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+form p {
+  margin: 4px 0 10px;
+  font-size: 0.8rem;
+  color: #dc2626;
 }
 
-.card {
-  padding: 2em;
+form input[type="submit"] {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
-.read-the-docs {
-  color: #888;
-} */
+form input[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+form input[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+form br {
+  display: none;
+}

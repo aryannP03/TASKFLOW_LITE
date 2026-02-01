@@ -4,6 +4,7 @@ import Dashboard from "./features/dashboard/Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoutes from './utils/ProtectedRoutes';
 import LoginPage from './components/Login';
+import WelcomePage from './features/welcome-page/WelcomePage';
 
 
 function App() {
@@ -11,14 +12,16 @@ function App() {
     <Routes>
       <Route path="/login" 
       element={<LoginPage />} />
-
       
-        <Route element={<ProtectedRoutes />}> 
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
+      <Route path="/welcome-page" 
+      element={<WelcomePage />} />
+      
+      <Route element={<ProtectedRoutes />}> 
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Route>
         
 
-      <Route path="*" element={<Navigate to="/login" />} />
+      <Route path="*" element={<Navigate to="/welcome-page" />} />
     </Routes>
   )
 }
