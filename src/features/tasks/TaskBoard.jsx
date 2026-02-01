@@ -36,14 +36,15 @@ function TaskBoard({ tasks }) {
       updatedData: {status: newStatus},
 
     }))
+  }
 
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <div className="board">
-          <TaskColumn title="To Do" tasks={todoTasks} setTasks={setTasks} type="todo" />
-          <TaskColumn title="In Progress" tasks={inProgressTasks} setTasks={setTasks} type="progress"/>
-          <TaskColumn title="Done" tasks={doneTasks} setTasks={setTasks} type="done"/>
+          <TaskColumn title="To Do" tasks={todoTasks} type="todo" />
+          <TaskColumn title="In Progress" tasks={inProgressTasks} type="progress"/>
+          <TaskColumn title="Done" tasks={doneTasks} type="done"/>
       </div>
     </DndContext>
   );

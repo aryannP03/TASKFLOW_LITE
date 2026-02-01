@@ -28,7 +28,7 @@ export const editTask = createAsyncThunk("editTask",
         await fetch(`${API_URL}/${id}`, {
             method: "PATCH",
             headers: {
-                "Content-Type": "json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(updatedData),
         })
@@ -67,7 +67,7 @@ const tasksSlice = createSlice({
         })
         .addCase(editTask.fulfilled, (state, action) => {
             const { id, updatedData} = action.payload
-            const task = state.tasks.map((task) => task.id===id)
+            const task = state.tasks.find((task) => task.id===id)
             Object.assign(task, updatedData)
         })
     }

@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "task6",
-      "status": "progress",
+      "status": "done",
       "priority": "high",
       "dueDate": "2026-02-01",
       "assignee": "Aryan"
@@ -21,7 +21,7 @@
       "title": "task2",
       "priority": "medium",
       "dueDate": "2026-01-31",
-      "status": "done",
+      "status": "todo",
       "assignee": "Aryan"
     },
     {
@@ -29,7 +29,7 @@
       "title": "task3",
       "priority": "low",
       "dueDate": "2026-02-17",
-      "status": "todo",
+      "status": "progress",
       "assignee": "Aryan"
     },
     {
@@ -45,7 +45,7 @@
       "title": "task4",
       "priority": "high",
       "dueDate": "2026-01-30",
-      "status": "done",
+      "status": "progress",
       "assignee": "Aryan"
     },
     {
@@ -53,8 +53,16 @@
       "title": "task5",
       "priority": "medium",
       "dueDate": "2026-01-30",
-      "status": "todo",
+      "status": "done",
       "assignee": "Aryan"
+    },
+    {
+      "id": "ba35",
+      "title": "task7",
+      "priority": "high",
+      "dueDate": "2026-02-02",
+      "assignee": "Aryan",
+      "status": "todo"
     }
   ]
 }
