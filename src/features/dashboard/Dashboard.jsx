@@ -11,6 +11,7 @@ import useDebounce from "../../hooks/useDebounce";
 import useTaskFilter from "../../hooks/useTaskFilter";
 import { useDispatch, useSelector} from "react-redux"
 import { fetchTasks, addTask } from "../tasks/tasksSlice";
+import Header from "../../components/header/Header";
 
 function Dashboard() {
 
@@ -50,10 +51,8 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className="dashboard-container">
-        <header className="dashboard-title">
-          <h1>TaskFlow Lite</h1>
-          <button className="logout-btn"onClick={handleLogout}>Logout</button>
-        </header>
+        
+        <Header />
 
         <div style={{ margin: "16px 0" }}>
           <button className="add-task-btn" onClick={() => setShowPopup(true)}>

@@ -1,5 +1,3 @@
-
-
 function Filter({ priority, setPriority}) {
     
     
