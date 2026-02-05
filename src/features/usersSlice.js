@@ -1,29 +1,29 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const API_URL = "http://localhost:3000/tasks"
+const API_URL = "http://localhost:3000/users"
 
-export const fetchTasks = createAsyncThunk("fetchTasks", 
+export const fetchUsers = createAsyncThunk("fetchUsers", 
     async() => {
         const response = await fetch(API_URL)
         return await response.json()
     }
 )
 
-export const addTask = createAsyncThunk("addTask",
-    async (task) => {
+export const addUser = createAsyncThunk("addUser",
+    async (user) => {
         const response = await fetch(API_URL, {
             method: "POST",
             headers: {
-                "Content-Type": "json",
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(task),
+            body: JSON.stringify(user),
         })
 
         return await response.json()
     }
 )
 
-export const editTask = createAsyncThunk("editTask", 
+export const editUser = createAsyncThunk("editUser", 
     async ({ id, updatedData}) => {
         await fetch(`${API_URL}/${id}`, {
             method: "PATCH",
@@ -39,39 +39,41 @@ export const editTask = createAsyncThunk("editTask",
 
 
 const initialState =  {
-    tasks: [],
+    users: [],
     loading: false,
     error: null,
+    currentUser: null,
 }
 
 
-const tasksSlice = createSlice({
-    name: "tasks",
+const usersSlice = createSlice({
+    name: "users",
     initialState,
     reducers: {},
 
     extraReducers: (builder) => {
-        builder.addCase(fetchTasks.pending, (state) => {
+        builder.addCase(fetchUsers.pending, (state) => {
             state.loading = true
             state.error = null
         })
-        .addCase(fetchTasks.rejected, (state, action) => {
+        .addCase(fetchUsers.rejected, (state, action) => {
             state.loading = false
             state.error = action.payload
         })
-        .addCase(fetchTasks.fulfilled, (state, action) => {
+        .addCase(fetchUsers.fulfilled, (state, action) => {
             state.loading = false
-            state.tasks = action.payload
+            state.users = action.payload
         })
-        .addCase(addTask.fulfilled, (state, action) =>{
-            state.tasks.push(action.payload)
+        .addCase(addUser.fulfilled, (state, action) =>{
+            state.users.push(action.payload)
+            state.currentUser = action.payload
         })
-        .addCase(editTask.fulfilled, (state, action) => {
+        .addCase(editUser.fulfilled, (state, action) => {
             const { id, updatedData} = action.payload
-            const task = state.tasks.find((task) => task.id===id)
-            Object.assign(task, updatedData)
+            const user = state.users.find((u) => u.id===id)
+            Object.assign(user, updatedData)
         })
     }
 })
 
-export default tasksSlice.reducer
+export default usersSlice.reducer

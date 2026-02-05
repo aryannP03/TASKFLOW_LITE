@@ -3,8 +3,9 @@ import './App.css'
 import Dashboard from "./features/dashboard/Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoutes from './utils/ProtectedRoutes';
-import LoginPage from './components/Login';
+import LoginPage from './features/login/Login';
 import WelcomePage from './features/welcome-page/WelcomePage';
+import UpdateUser from './features/update-user/UpdateUser';
 
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
     <Routes>
       <Route path="/login" 
       element={<LoginPage />} />
+      
+      <Route path="/update-user" 
+      element={<UpdateUser />} />
       
       <Route path="/welcome-page" 
       element={<WelcomePage />} />

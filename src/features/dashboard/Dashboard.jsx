@@ -12,6 +12,7 @@ import useTaskFilter from "../../hooks/useTaskFilter";
 import { useDispatch, useSelector} from "react-redux"
 import { fetchTasks, addTask } from "../tasks/tasksSlice";
 import Header from "../../components/header/Header";
+import "./style/index.css"
 
 function Dashboard() {
 

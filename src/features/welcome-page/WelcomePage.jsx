@@ -6,8 +6,9 @@ function WelcomePage() {
     <>
       <Header />
 
-      <main className="welcome-page">
-        <h2>Welcome to TaskFlow-Lite</h2>
+      <main className="flex h-screen items-center justify-center border-t bg-mainbg">
+        <h1 className="text-6xl font-extrabold text-white/80"
+        >Welcome to TaskFlow-Lite</h1>
         
       </main>
     </>
