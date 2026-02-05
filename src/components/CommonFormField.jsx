@@ -82,7 +82,7 @@ function CommonFormField({ config, control }) {
               {...field}
               type="text"
               placeholder={placeholder}
-              className="w-full border rounded p-2 focus:ring-2 focus:ring-[#E4A02D] focus:outline-none focus:border-transparent text-white bg-[#2C0E48]"
+              className="w-[32rem] border rounded p-2 focus:ring-2 focus:ring-[#E4A02D] focus:outline-none focus:border-transparent text-white bg-[#2C0E48]"
             />
 
             {fieldState.error && (

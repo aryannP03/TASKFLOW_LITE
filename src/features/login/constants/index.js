@@ -10,7 +10,7 @@ const USER_LOGIN = [
     name: 'password',
     label: 'Password',
     type: 'password',
-    placeholder: 'Password',
+    placeholder: '- - - - - - - - - -',
     rules: { 
       required: 'Password is required!',
       minLength: { value: 3, message: 'Password must be at least 3 characters' }

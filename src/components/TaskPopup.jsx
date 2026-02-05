@@ -1,6 +1,6 @@
 function TaskPopup({ children, onClose }) {
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
+    <div className="fixed inset-0 backdrop-blur-md flex items-center justify-center z-50 px-4">
       <div className="relative bg-transparent">
         
         <button

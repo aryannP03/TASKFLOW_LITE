@@ -26,13 +26,19 @@ function LoginPage() {
 
   return (
     <>
-      <h2 className="text-3xl font-bold text-center mb-2 mt-[1rem]">
-        Login
-      </h2>
-
-      <p className="text-center text-sm opacity-80 mb-6 mt[14rem]">
-        Login with email
-      </p>
+      <div className="">
+        <h2 className="mt-16 font-poppins font-semibold text-[28px] tracking-normal text-center">
+          Login
+        </h2>
+      </div>
+     
+      <div className="flex justify-around items-center mt-10 mb-10">  
+          <span className="bg-white w-35 h-[1.15px]"></span>
+          <p className="text-[18.33px]">
+            Login with email
+          </p>
+          <span className="bg-white w-35 h-[1.15px]"></span>  
+      </div>  
 
       <form onSubmit={handleSubmit(handleLogin)}>
         {USER_LOGIN.map((field) => (
@@ -44,17 +50,19 @@ function LoginPage() {
           />
         ))}
 
+        <p className="text-right text-sm mt-0 cursor-pointer opacity-80">
+        Forgot Your Password?
+        </p>
+
         <button
           type="submit"
-          className="w-full mt-4 bg-blue-600 text-white py-2 rounded"
+          className="w-full mt-4 bg-btn-clr text-white py-2 rounded-[10px]"
         >
           Login
         </button>
       </form>
 
-      <p className="text-right text-sm mt-2 cursor-pointer opacity-80">
-        Forgot Your Password?
-      </p>
+      
 
       <p className="text-center text-sm mt-6">
         Don’t have an account?{" "}

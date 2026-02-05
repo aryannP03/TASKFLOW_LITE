@@ -19,23 +19,22 @@ function Header() {
 
   return (
     <>
-      <div className="flex h-[5rem] bg-header-bg align-middle text-header-text ">  
-        <nav className="flex items-center w-full px-6">
-          <h1 className="flex items-center mr-auto gap-2 text-2xl font-extrabold">TaskFlow Lite</h1>
+      <div className="flex h-[6rem] bg-header-bg align-middle text-header-text sm:h-[5rem]">  
+        <nav className="flex flex-col items-start items-center w-full px-6 sm:flex-row ">
+          <h1 className="mt-6 flex items-center mr-auto gap-2 text-1xl font-extrabold sm:text-2xl">TaskFlow Lite</h1>
 
           {!isAuthenticated && (
             <div
-            className="flex gap-4">
+            className="flex gap-4 mt-2">
               <button 
-                className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition "
+                className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
+                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3 "
                 onClick={() => setShowLoginPopup(true)}>
                 Login
               </button>
 
               <button 
-              className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition  "
+              className= "px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
               onClick={() => setShowSignUpPopup(true)}>
                 Signup
               </button>
@@ -75,8 +74,8 @@ function Header() {
 
               <div>
                 
-                <div className="w-full md:w-1/2 flex items-center justify-center"></div>
-                  <div className="w-[36rem] min-h-[48rem] max-w-full px-8 py-12 flex flex-col justify-center ">
+                {/* <div className="w-full md:w-1/2 flex items-center"></div> */}
+                  <div className="w-[36rem] min-h-[48rem] max-w-full px-8  flex flex-col justify-center">
                     <LoginPage
                       
                   />
@@ -98,7 +97,7 @@ function Header() {
               </div>
 
              <div className="w-full md:w-1/2 flex items-center justify-center">
-                <div className="w-[36rem] min-h-[48rem] max-w-full px-8 py-12 flex flex-col justify-center ">    
+                <div className="w-[36rem] min-h-[48rem] max-w-full px-8 py-12 flex flex-col justify-center">    
                   <SignupPage
                       
                   />
