@@ -19,9 +19,9 @@ function Header() {
 
   return (
     <>
-      <div className="flex h-[6rem] bg-header-bg align-middle text-header-text sm:h-[5rem]">  
-        <nav className="flex flex-col items-start items-center w-full px-6 sm:flex-row ">
-          <h1 className="mt-6 flex items-center mr-auto gap-2 text-1xl font-extrabold sm:text-2xl">TaskFlow Lite</h1>
+      <div className="bg-header-bg align-middle text-header-text">  
+        <nav className="flex flex-col items-center w-full px-6 sm:flex-row ">
+          <h1 className="mt-6 flex items-center mr-auto gap-2 text-xl font-extrabold sm:text-2xl">TaskFlow Lite</h1>
 
           {!isAuthenticated && (
             <div
@@ -49,22 +49,21 @@ function Header() {
               onClick={() => logout()}>
                 Logout
               </button>
-              <botton 
+              <button 
               className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium
                         hover:bg-indigo-700 active:scale-95 transition"
               onClick={() => navigate('/update-user')}>
                 Update User
-              </botton>
-            </>  
+              </button>            </>  
           )}
           </nav>
       </div>    
 
       {showLoginPopup && (
         <TaskPopup onClose={() => setShowLoginPopup(false)}>
-            <div className="flex md:flex-row w-[95vw] lg:w-[72rem] md:w-[36rem] min-h-[48rem] rounded-2xl overflow-hidden bg-mainbg text-white">
+            <div className="flex w-[95vw] max-w-[72rem] min-h-[90vh] md:min-h-[48rem] rounded-2xl overflow-hidden bg-mainbg text-white">
               
-              <div className="hidden md:block md:w-45% items-center justify-center">
+              <div className="hidden md:flex w-1/2">
                 <img
                   src="/assets/login.jpg"
                   alt="Login photo"
@@ -72,40 +71,42 @@ function Header() {
                 />
               </div>
 
-              <div>
-                
-                {/* <div className="w-full md:w-1/2 flex items-center"></div> */}
-                  <div className="w-[36rem] min-h-[48rem] max-w-full px-8  flex flex-col justify-center">
+
+              
+                <div className="flex w-full md:w-1/2">
+                  <div className="w-full px-4 py-6 sm:px-6 md:px-8 md:py-12 flex flex-col justify-center">
                     <LoginPage
                       
                   />
                   </div>
-              </div>
+                </div>  
+              
             </div>    
         </TaskPopup>
       )}
       {showSignUpPopup && (
-        <TaskPopup onClose={() => setShowSignUpPopup(false)}>
-          <div className="flex md:flex-row w-[95vw] lg:w-[72rem] md:w-[36rem] min-h-[48rem] rounded-2xl overflow-hidden bg-mainbg text-white">
+  <TaskPopup onClose={() => setShowSignUpPopup(false)}>
+    <div className="flex w-[95vw] max-w-[72rem] min-h-[90vh] md:min-h-[48rem] rounded-2xl overflow-hidden bg-mainbg text-white">
 
-            <div className="hidden md:block md:w- items-center justify-center">
-                <img
-                  src="/assets/login.jpg"
-                  alt="Login photo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+    
+      <div className="hidden md:flex w-1/2">
+        <img
+          src="/assets/login.jpg"
+          alt="Signup photo"
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-             <div className="w-full md:w-1/2 flex items-center justify-center">
-                <div className="w-[36rem] min-h-[48rem] max-w-full px-8 py-12 flex flex-col justify-center">    
-                  <SignupPage
-                      
-                  />
-                  </div>
-                </div>  
-          </div>      
-        </TaskPopup>
-      )}
+      <div className="flex w-full md:w-1/2">
+        <div className="w-full px-4 py-6 sm:px-6 md:px-8 md:py-12 flex flex-col justify-center">
+          <SignupPage />
+        </div>
+      </div>
+
+    </div>
+  </TaskPopup>
+)}
+
     </>
   );
 }
