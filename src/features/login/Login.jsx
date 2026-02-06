@@ -56,7 +56,7 @@ function LoginPage() {
 
         <button
           type="submit"
-          className="w-full mt-4 bg-btn-clr text-white py-2 rounded-[10px]"
+          className="w-full mt-4 md:mt-16 bg-btn-clr text-white py-2 rounded-[10px]"
         >
           Login
         </button>
@@ -67,7 +67,9 @@ function LoginPage() {
       <p className="text-center text-sm mt-6">
         Don’t have an account?{" "}
         <span className="text-secondary cursor-pointer">
-          <button>
+          <button 
+            className="underline text-amber-500"
+            >
             Sign Up
             </button>
         </span>

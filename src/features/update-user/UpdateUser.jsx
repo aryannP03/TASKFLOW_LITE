@@ -55,57 +55,55 @@ function UpdateUser() {
 
   return (
     <>
-      <div
-      className="min-h-screen flex items-center justify-center px-4 bg-mainbg">
+      <div className="min-h-screen flex items-center justify-center px-4 bg-mainbg">
+        <div className="w-full max-w-5xl rounded-2xl bg-[#240b3d] px-4 py-6 sm:px-6 sm:py-8 md:p-8 shadow-2xl">
 
-        <div className="w-full max-w-5xl rounded-2xl bg-[#240b3d] p-8 shadow-2xl" >      
-            <div>
-                <div className="text-center mb-10">
-                    <h2 className="text-3xl font-semibold text-white mb-4">
-                        Personal Information
-                    </h2>
+          <div className="text-center mb-6 sm:mb-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-2 sm:mb-4">
+              Personal Information
+            </h2>
 
-                    <div className="flex flex-col items-center gap-2">
-                        <img
-                        src="\assets\userimage.jpg"
-                        alt="User Avatar"
-                        className="w-20 h-20 rounded-full border-2 border-white/30"
-                        />
+            <div className="flex flex-col items-center gap-2">
+              <img
+                src="/assets/userimage.jpg"
+                alt="User Avatar"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white/30"
+              />
 
-                        <h3 className="text-lg font-medium text-white">
-                        Jason Miller
-                        </h3>
+              <h3 className="text-base sm:text-lg font-medium text-white">
+                Jason Miller
+              </h3>
 
-                        <p className="text-sm text-white/70">
-                        User Id: jason11
-                        </p>
-                    </div>
-                    </div>
-            </div>    
-
-            <div>    
-                <form onSubmit={handleSubmit(handleUpdate)}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">    
-                        {USER_UPDATE.map((field) => (
-                        <CommonFormField
-                            key={field.name}
-                            config={field}
-                            control={control}
-                        />
-                        ))}
-                    </div>
-                    <div className="flex justify-center mt-10">    
-                        <button
-                        type="submit"
-                        className="px-12 py-3 rounded-full bg-amber-300 text-white font-medium shadow-lg hover:opacity-90 transition"
-                        >
-                        Update
-                        </button>
-                    </div>
-                </form>
+              <p className="text-sm text-white/70">
+                User Id: jason11
+              </p>
             </div>
-        </div>      
-      </div>  
+          </div>
+
+          <form onSubmit={handleSubmit(handleUpdate)}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-x-6 md:gap-y-4">
+              {USER_UPDATE.map((field) => (
+                <CommonFormField
+                  key={field.name}
+                  config={field}
+                  control={control}
+                />
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-8 sm:mt-10">
+              <button
+                type="submit"
+                className="px-8 sm:px-12 py-3 rounded-full w-full sm:w-auto bg-amber-300 text-white font-medium shadow-lg hover:opacity-90 transition"
+              >
+                Update
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
     </>
   );
 }

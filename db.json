@@ -177,6 +177,14 @@
       "state": "new-delhi",
       "fullname": "aryan",
       "dob": "11/22/2003"
+    },
+    {
+      "id": "ebc8",
+      "email": "abc@345",
+      "password": "werty",
+      "username": "Aryan",
+      "above18": true,
+      "phone": "1112223334"
     }
   ]
 }

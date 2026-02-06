@@ -35,7 +35,7 @@ const USER_SIGNUP = [
   },
   {
     name: "above18",
-    label: "Above 18",
+    label: "I confirm that I am 18 years or older and legally allowed to participate in online gaming.",
     type: "checkbox",
     rules: {
         required: "You must be above 18"

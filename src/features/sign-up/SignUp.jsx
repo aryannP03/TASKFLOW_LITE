@@ -57,7 +57,7 @@ function SignupPage() {
 
         <button
           type="submit"
-          className="w-full mt-4 bg-blue-600 text-white py-2 rounded"
+          className="w-full mt-4 md:mt-12 bg-btn-clr text-white py-2 rounded-[10px]"
         >
           Signup
         </button>
