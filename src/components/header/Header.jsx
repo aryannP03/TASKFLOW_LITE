@@ -2,51 +2,141 @@ import React, {useState} from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import TaskPopup from "../TaskPopup";
-import CommonForm from "../CommonForm";
+import CommonForm from "../CommonFormField";
+import CommonFormField from "../CommonFormField";
+import LoginPage from "../../features/login/Login";
+import SignupPage from "../../features/sign-up/SignUp";
+
 
 function Header() {
   const { isAuthenticated, logout, login } = useAuth();
   const navigate = useNavigate();
   const [showLoginPopup, setShowLoginPopup] = useState(false)
+  const [showSignUpPopup, setShowSignUpPopup] = useState(false)
+  const [showDropDown, setshowDropDown] = useState(false)
 
-  const handleLoginSubmit = (data) => {
-    login(data)
-    setShowLoginPopup(false)
-    navigate("/dashboard")
-  }
-
-  return (
+  
+    return (
     <>
-    <nav>
-      <h1>TaskFlow Lite</h1>
+      <div className="bg-header-bg align-middle text-header-text">  
+        <nav className="flex items-start w-full px-6 sm:flex-row h-20 ">
+          <h1 className="mt-6 flex items-center mr-auto gap-2 text-xl font-extrabold sm:text-2xl">TaskFlow Lite</h1>
 
-      {!isAuthenticated && (
-        <>
-          <button onClick={() => setShowLoginPopup(true)}>
-            Login
-          </button>
+          {!isAuthenticated && (
+            <div
+            className="flex gap-4 mt-7 md:mt-4">
+              <button 
+                className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
+                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
+                onClick={() => setShowLoginPopup(true)}>
+                Login
+              </button>
 
-          <button onClick={() => navigate("/signup")}>
-            Signup
-          </button>
-        </>
-      )}
+              <button 
+              className= "px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
+              onClick={() => setShowSignUpPopup(true)}>
+                Signup
+              </button>
+            </div>
+          )}
 
-      {isAuthenticated && (
-        <button onClick={logout}>
-          Logout
-        </button>
-      )}
-      </nav>
+          {isAuthenticated && (
+            // <div className="flex gap-4 mt-7 md:mt-4">  
+            //   <button 
+            //   className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
+            //             hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"   
+            //   onClick={() => logout()}>
+            //     Logout
+            //   </button>
+            //   <button 
+            //   className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
+            //             hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
+            //   onClick={() => navigate('/update-user')}>
+            //     Update User
+            //   </button>            
+            // </div>
+
+            <div className="relative mt-4 mr-7 text-2xl">
+              
+                <button onClick={() => setshowDropDown(prev => !prev)}
+                  className="">
+                    <img
+                      src="/assets/userimage.jpg"
+                      alt="User Avatar"
+                      className="rounded-full border-none h-13 w-13"
+                    />
+                </button>
+                {showDropDown && (
+                  <div className="absolute top-16 right-0.5 border-2  text-xl bg-fuchsia-800 w-50">
+                    <button 
+                      className="w-full hover:bg-header-bg"
+                      onClick={() => navigate('/update-user') }
+                      >Profile</button>
+                    <button 
+                      className="w-full hover:bg-header-bg"
+                      onClick={() => logout()}
+                      >Logout</button>
+                  </div> 
+                )}
+              </div>  
+
+
+           
+            
+          )}
+          </nav>
+      </div>    
 
       {showLoginPopup && (
         <TaskPopup onClose={() => setShowLoginPopup(false)}>
-            <CommonForm
-                onSubmit={handleLoginSubmit}
-                buttonText="Login"
-            />    
+            <div className="flex w-[95vw] max-w-[72rem] min-h-[90vh] md:min-h-[48rem] rounded-2xl overflow-hidden bg-mainbg text-white">
+              
+              <div className="hidden md:flex w-1/2">
+                <img
+                  src="/assets/login.jpg"
+                  alt="Login photo"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+
+              
+                <div className="flex w-full md:w-1/2">
+                  <div className="w-full px-4 py-6 sm:px-6 md:px-8 md:py-12 flex flex-col justify-center">
+                    <LoginPage
+                      
+                  />
+                  </div>
+                </div>  
+              
+            </div>    
         </TaskPopup>
       )}
+      {showSignUpPopup && (
+        <TaskPopup onClose={() => setShowSignUpPopup(false)}>
+          <div className="flex w-[95vw] max-w-[72rem] min-h-[90vh] md:min-h-[48rem] rounded-2xl overflow-hidden bg-mainbg text-white">
+
+          
+            <div className="hidden md:flex w-1/2">
+              <img
+                src="/assets/login.jpg"
+                alt="Signup photo"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="flex w-full md:w-1/2">
+              <div className="w-full px-4 py-6 sm:px-6 md:px-8 md:py-12 flex flex-col justify-center">
+                <SignupPage />
+              </div>
+            </div>
+
+          </div>
+        </TaskPopup>
+      )}
+
+      
+
     </>
   );
 }

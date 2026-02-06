@@ -1,9 +1,12 @@
 import React, {createContext, useContext, useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AuthContext = createContext()
 
+
 export function AuthProvider({ children }) {
     const[isAuthenticated, setIsAuthenticated] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -21,6 +24,7 @@ export function AuthProvider({ children }) {
     const logout = () => {
         localStorage.removeItem('token')
         setIsAuthenticated(false)
+        navigate('/welcome-page')
     }
 
     

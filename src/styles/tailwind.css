@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+    --color-mainbg:#200B33;
+    --color-header-bg:#2C1246;
+    --color-header-text:#F2ECF7;
+    --color-btn-clr:#420356;
+    --color-bg-input-field:#2C0E48;
+    --color-update-form-bg:#240b3d;
+    --color-update-form-btn:#420356;
+    --color-save-update-btn:#FFBD0B;
+
+}

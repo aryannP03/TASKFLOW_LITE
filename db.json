@@ -29,7 +29,7 @@
       "title": "task3",
       "priority": "low",
       "dueDate": "2026-02-17",
-      "status": "progress",
+      "status": "todo",
       "assignee": "Aryan"
     },
     {
@@ -37,7 +37,7 @@
       "title": "task1",
       "priority": "low",
       "dueDate": "2026-03-18",
-      "status": "progress",
+      "status": "done",
       "assignee": "Aryan"
     },
     {
@@ -63,6 +63,168 @@
       "dueDate": "2026-02-02",
       "assignee": "Aryan",
       "status": "todo"
+    }
+  ],
+  "users": [
+    {
+      "id": "3",
+      "username": "bob",
+      "email": "bob@231",
+      "phone": "0123456789",
+      "full-name": "Bob Miller",
+      "gender": "Male",
+      "dob": "2022-02-02",
+      "address": "delhi",
+      "zip-code": "002006",
+      "state": "New Delhi"
+    },
+    {
+      "id": "144a",
+      "email": "abc@xyz",
+      "password": "abcx",
+      "username": "Aryan",
+      "above18": "true",
+      "phone": "101112131415"
+    },
+    {
+      "id": "e0e4",
+      "email": "test@xyz",
+      "password": "asdf",
+      "username": "testuser2",
+      "above18": "true",
+      "phone": "1111111111"
+    },
+    {
+      "id": "726a",
+      "email": "test@xyz",
+      "password": "asdf",
+      "username": "testuser2",
+      "above18": "true",
+      "phone": "1111111111"
+    },
+    {
+      "id": "08b4",
+      "email": "test@xyz",
+      "password": "asdf",
+      "username": "testuser2",
+      "above18": "true",
+      "phone": "1111111111"
+    },
+    {
+      "id": "4eed",
+      "email": "test@xyz",
+      "password": "asdf",
+      "username": "testuser2",
+      "above18": "true",
+      "phone": "1111111111"
+    },
+    {
+      "id": "f0b9",
+      "email": "ats@xyz",
+      "password": "asdd",
+      "username": "testuser3",
+      "above18": "true",
+      "phone": "1112223334"
+    },
+    {
+      "id": "1701",
+      "email": "asd@cvb",
+      "password": "qwerty",
+      "username": "testusr3",
+      "above18": true,
+      "phone": "112233445566"
+    },
+    {
+      "id": "afe4",
+      "email": "asd@cvb",
+      "password": "qwerty",
+      "username": "testusr3",
+      "above18": true,
+      "phone": "1111111111"
+    },
+    {
+      "id": "cf77",
+      "email": "test4@bcd",
+      "password": "werty",
+      "username": "test4",
+      "above18": true,
+      "phone": "00000022222"
+    },
+    {
+      "id": "4ca0",
+      "email": "asd@cvb",
+      "password": "werty",
+      "username": "testusr4",
+      "above18": true,
+      "phone": "101112131415",
+      "fullname": "Jason",
+      "gender": "male",
+      "address": "delhi",
+      "state": "MP",
+      "zipcode": "000000",
+      "dob": "11/10/2003"
+    },
+    {
+      "id": "6758",
+      "email": "abc@345",
+      "password": "asdw",
+      "username": "test45",
+      "above18": true,
+      "phone": "1111111111",
+      "gender": "male",
+      "address": "wedd",
+      "zipcode": "45666",
+      "state": "new-delhi",
+      "fullname": "aryan",
+      "dob": "11/22/2003"
+    },
+    {
+      "id": "ebc8",
+      "email": "abc@345",
+      "password": "werty",
+      "username": "Aryan",
+      "above18": true,
+      "phone": "1112223334"
+    },
+    {
+      "id": "4b0f",
+      "email": "asd@cvb",
+      "password": "werty",
+      "username": "test45",
+      "above18": true,
+      "phone": "112233445566"
+    },
+    {
+      "id": "2f37",
+      "email": "asd@cvb",
+      "password": "abs",
+      "username": "test45",
+      "above18": true,
+      "phone": "1112223334"
+    },
+    {
+      "id": "a79a",
+      "email": "test@xyz",
+      "password": "werty",
+      "username": "testusr4",
+      "above18": true,
+      "phone": "1112223334"
+    },
+    {
+      "id": "1315",
+      "email": "asd@cvb",
+      "password": "qwerty",
+      "username": "Aryan",
+      "above18": true,
+      "phone": "112233445566"
+    },
+    {
+      "id": "2e27",
+      "email": "test@xyz",
+      "password": "abs",
+      "username": "testusr4",
+      "above18": true,
+      "phone": "112233445566"
     }
   ]
 }

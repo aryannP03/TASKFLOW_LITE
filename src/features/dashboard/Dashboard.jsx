@@ -12,6 +12,7 @@ import useTaskFilter from "../../hooks/useTaskFilter";
 import { useDispatch, useSelector} from "react-redux"
 import { fetchTasks, addTask } from "../tasks/tasksSlice";
 import Header from "../../components/header/Header";
+import "./style/index.css"
 
 function Dashboard() {
 
@@ -50,9 +51,10 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
+      <Header />
       <div className="dashboard-container">
         
-        <Header />
+        
 
         <div style={{ margin: "16px 0" }}>
           <button className="add-task-btn" onClick={() => setShowPopup(true)}>
