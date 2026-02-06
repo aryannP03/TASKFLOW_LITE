@@ -14,7 +14,6 @@ function SignupPage() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-
   const {
       control,
       handleSubmit,

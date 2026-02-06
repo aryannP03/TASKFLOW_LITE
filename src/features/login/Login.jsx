@@ -32,7 +32,7 @@ function LoginPage() {
         </h2>
       </div>
      
-      <div className="flex gap-3 items-center mt-6 md:mt-10 mb-6 md:mb-10">  
+      <div className="flex justify-between items-center mt-6 md:mt-10 mb-6 md:mb-10">  
           <span className="bg-white flex-1 max-w-[8.75rem] h-[1.15px]"></span>
           <p className="text-[14px] sm:text-[16px] md:text-[18.33px]">
             Login with email
@@ -74,6 +74,8 @@ function LoginPage() {
             </button>
         </span>
       </p>
+
+      
     </>
   );
 }

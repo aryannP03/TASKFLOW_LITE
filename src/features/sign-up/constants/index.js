@@ -8,7 +8,7 @@ const USER_SIGNUP = [
   },
   {
     name: 'email',
-    label: 'email ',
+    label: 'Email ',
     type: 'email',
     placeholder: 'Enter your email',
     rules: { required: 'Email is required!' }

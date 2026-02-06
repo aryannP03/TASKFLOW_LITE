@@ -51,9 +51,10 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
+      <Header />
       <div className="dashboard-container">
         
-        <Header />
+        
 
         <div style={{ margin: "16px 0" }}>
           <button className="add-task-btn" onClick={() => setShowPopup(true)}>

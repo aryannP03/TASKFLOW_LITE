@@ -27,7 +27,7 @@ function CommonFormField({ config, control }) {
 
               <select
                 {...field}
-                className="w-full border rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none text-white bg-[#2C0E48]"
+                className="w-full border rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none text-white bg-bg-input-field"
               >
                 <option value="">Select {label}</option>
                 {options.map((opt) => (
@@ -82,7 +82,7 @@ function CommonFormField({ config, control }) {
               {...field}
               type="text"
               placeholder={placeholder}
-              className="w-full border p-2 focus:ring-2 focus:ring-[#E4A02D] focus:outline-none focus:border-transparent rounded-lg text-white bg-[#2C0E48]"
+              className="w-full border p-2 focus:ring-2 focus:ring-[#E4A02D] focus:outline-none focus:border-transparent rounded-lg text-white bg-bg-input-field"
             />
 
             {fieldState.error && (

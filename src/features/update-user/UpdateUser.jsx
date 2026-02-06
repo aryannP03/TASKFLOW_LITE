@@ -55,8 +55,8 @@ function UpdateUser() {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center px-4 bg-mainbg">
-        <div className="w-full max-w-5xl rounded-2xl bg-[#240b3d] px-4 py-6 sm:px-6 sm:py-8 md:p-8 shadow-2xl">
+      <div className="min-h-screen flex items-center justify-center px-4 bg-update-form-bg">
+        <div className="w-full max-w-5xl rounded-2xl bg-mainbg px-4 py-6 sm:px-6 sm:py-8 md:p-8 shadow-2xl">
 
           <div className="text-center mb-6 sm:mb-10">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-2 sm:mb-4">
@@ -94,7 +94,7 @@ function UpdateUser() {
             <div className="flex justify-center mt-8 sm:mt-10">
               <button
                 type="submit"
-                className="px-8 sm:px-12 py-3 rounded-full w-full sm:w-auto bg-amber-300 text-white font-medium shadow-lg hover:opacity-90 transition"
+                className="px-8 sm:px-12 py-3 rounded-full w-full sm:w-auto bg-update-form-btn text-save-update-btn font-medium shadow-lg hover:opacity-90 transition"
               >
                 Update
               </button>

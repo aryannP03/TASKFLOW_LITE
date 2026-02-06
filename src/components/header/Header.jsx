@@ -20,15 +20,15 @@ function Header() {
   return (
     <>
       <div className="bg-header-bg align-middle text-header-text">  
-        <nav className="flex flex-col items-center w-full px-6 sm:flex-row ">
+        <nav className="flex items-start w-full px-6 sm:flex-row h-20 ">
           <h1 className="mt-6 flex items-center mr-auto gap-2 text-xl font-extrabold sm:text-2xl">TaskFlow Lite</h1>
 
           {!isAuthenticated && (
             <div
-            className="flex gap-4 mt-2">
+            className="flex gap-4 mt-7 md:mt-4">
               <button 
                 className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3 "
+                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
                 onClick={() => setShowLoginPopup(true)}>
                 Login
               </button>
@@ -42,19 +42,22 @@ function Header() {
           )}
 
           {isAuthenticated && (
-            <>  
+            <div className="flex gap-4 mt-7 md:mt-4">  
               <button 
-              className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition"   
+              className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
+                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"   
               onClick={() => logout()}>
                 Logout
               </button>
               <button 
-              className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition"
+              className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
+                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
               onClick={() => navigate('/update-user')}>
                 Update User
-              </button>            </>  
+              </button>            
+            </div>
+
+            
           )}
           </nav>
       </div>    
@@ -85,27 +88,27 @@ function Header() {
         </TaskPopup>
       )}
       {showSignUpPopup && (
-  <TaskPopup onClose={() => setShowSignUpPopup(false)}>
-    <div className="flex w-[95vw] max-w-[72rem] min-h-[90vh] md:min-h-[48rem] rounded-2xl overflow-hidden bg-mainbg text-white">
+        <TaskPopup onClose={() => setShowSignUpPopup(false)}>
+          <div className="flex w-[95vw] max-w-[72rem] min-h-[90vh] md:min-h-[48rem] rounded-2xl overflow-hidden bg-mainbg text-white">
 
-    
-      <div className="hidden md:flex w-1/2">
-        <img
-          src="/assets/login.jpg"
-          alt="Signup photo"
-          className="w-full h-full object-cover"
-        />
-      </div>
+          
+            <div className="hidden md:flex w-1/2">
+              <img
+                src="/assets/login.jpg"
+                alt="Signup photo"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-      <div className="flex w-full md:w-1/2">
-        <div className="w-full px-4 py-6 sm:px-6 md:px-8 md:py-12 flex flex-col justify-center">
-          <SignupPage />
-        </div>
-      </div>
+            <div className="flex w-full md:w-1/2">
+              <div className="w-full px-4 py-6 sm:px-6 md:px-8 md:py-12 flex flex-col justify-center">
+                <SignupPage />
+              </div>
+            </div>
 
-    </div>
-  </TaskPopup>
-)}
+          </div>
+        </TaskPopup>
+      )}
 
     </>
   );
