@@ -41,9 +41,13 @@ function SignupPage() {
         Sign Up
       </h2>
 
-      <p className="text-center text-sm opacity-80 mb-6">
-        Sign Up with email
-      </p>
+      <div className="flex justify-between items-center mt-6 md:mt-10 mb-6 md:mb-10">  
+          <span className="bg-white flex-1 max-w-[8.75rem] h-[1.15px]"></span>
+            <p className="text-center text-[14px] sm:text-[16px] md:text-[18.33px] opacity-80">
+              Sign Up with email
+            </p>
+          <span className="bg-white flex-1 max-w-[8.75rem] h-[1.15px]"></span>  
+      </div> 
 
       <form onSubmit={handleSubmit(handleSignup)}>
         {USER_SIGNUP.map((field) => (

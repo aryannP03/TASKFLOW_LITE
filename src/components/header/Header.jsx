@@ -13,11 +13,10 @@ function Header() {
   const navigate = useNavigate();
   const [showLoginPopup, setShowLoginPopup] = useState(false)
   const [showSignUpPopup, setShowSignUpPopup] = useState(false)
+  const [showDropDown, setshowDropDown] = useState(false)
 
   
-
-
-  return (
+    return (
     <>
       <div className="bg-header-bg align-middle text-header-text">  
         <nav className="flex items-start w-full px-6 sm:flex-row h-20 ">
@@ -42,21 +41,47 @@ function Header() {
           )}
 
           {isAuthenticated && (
-            <div className="flex gap-4 mt-7 md:mt-4">  
-              <button 
-              className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"   
-              onClick={() => logout()}>
-                Logout
-              </button>
-              <button 
-              className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
-              onClick={() => navigate('/update-user')}>
-                Update User
-              </button>            
-            </div>
+            // <div className="flex gap-4 mt-7 md:mt-4">  
+            //   <button 
+            //   className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
+            //             hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"   
+            //   onClick={() => logout()}>
+            //     Logout
+            //   </button>
+            //   <button 
+            //   className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
+            //             hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
+            //   onClick={() => navigate('/update-user')}>
+            //     Update User
+            //   </button>            
+            // </div>
 
+            <div className="relative mt-4 mr-7 text-2xl">
+              
+                <button onClick={() => setshowDropDown(prev => !prev)}
+                  className="">
+                    <img
+                      src="/assets/userimage.jpg"
+                      alt="User Avatar"
+                      className="rounded-full border-none h-13 w-13"
+                    />
+                </button>
+                {showDropDown && (
+                  <div className="absolute top-16 right-0.5 border-2  text-xl bg-fuchsia-800 w-50">
+                    <button 
+                      className="w-full hover:bg-header-bg"
+                      onClick={() => navigate('/update-user') }
+                      >Profile</button>
+                    <button 
+                      className="w-full hover:bg-header-bg"
+                      onClick={() => logout()}
+                      >Logout</button>
+                  </div> 
+                )}
+              </div>  
+
+
+           
             
           )}
           </nav>
@@ -109,6 +134,8 @@ function Header() {
           </div>
         </TaskPopup>
       )}
+
+      
 
     </>
   );

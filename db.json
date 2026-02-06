@@ -217,6 +217,14 @@
       "username": "Aryan",
       "above18": true,
       "phone": "112233445566"
+    },
+    {
+      "id": "2e27",
+      "email": "test@xyz",
+      "password": "abs",
+      "username": "testusr4",
+      "above18": true,
+      "phone": "112233445566"
     }
   ]
 }
