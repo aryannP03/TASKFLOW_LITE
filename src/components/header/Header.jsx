@@ -67,13 +67,13 @@ function Header() {
                     />
                 </button>
                 {showDropDown && (
-                  <div className="absolute top-16 right-0.5 border-2  text-xl bg-fuchsia-800 w-50">
+                  <div className="absolute top-16 right-0.5 text-xl bg-fuchsia-800 w-50">
                     <button 
-                      className="w-full hover:bg-header-bg"
+                      className="w-full hover:bg-header-bg border-b-fuchsia-300 border-2"
                       onClick={() => navigate('/update-user') }
                       >Profile</button>
                     <button 
-                      className="w-full hover:bg-header-bg"
+                      className="w-full hover:bg-header-bg border-b-fuchsia-300 border-2"
                       onClick={() => logout()}
                       >Logout</button>
                   </div> 

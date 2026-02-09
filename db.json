@@ -55,14 +55,6 @@
       "dueDate": "2026-01-30",
       "status": "done",
       "assignee": "Aryan"
-    },
-    {
-      "id": "ba35",
-      "title": "task7",
-      "priority": "high",
-      "dueDate": "2026-02-02",
-      "assignee": "Aryan",
-      "status": "todo"
     }
   ],
   "users": [

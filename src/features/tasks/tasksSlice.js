@@ -37,6 +37,16 @@ export const editTask = createAsyncThunk("editTask",
     }
 )
 
+export const deleteTask = createAsyncThunk("deleteTask",
+  async (id) => {
+    await fetch(`${API_URL}/${id}`, {
+      method: "DELETE"
+    })
+
+    return id
+  }
+)
+
 
 const initialState =  {
     tasks: [],
@@ -84,6 +94,9 @@ const tasksSlice = createSlice({
             const { id, updatedData} = action.payload
             const task = state.tasks.find((task) => task.id===id)
             Object.assign(task, updatedData)
+        })
+        .addCase(deleteTask.fulfilled, (state, action) => {
+            state.tasks = state.tasks.filter(task => task.id !== action.payload)
         })
     }
 })

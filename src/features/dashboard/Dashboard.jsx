@@ -10,14 +10,17 @@ import Filter from "../../components/Filter";
 import useDebounce from "../../hooks/useDebounce";
 import useTaskFilter from "../../hooks/useTaskFilter";
 import { useDispatch, useSelector} from "react-redux"
-import { fetchTasks, addTask } from "../tasks/tasksSlice";
+import { fetchTasks, addTask, deleteTask } from "../tasks/tasksSlice";
 import Header from "../../components/header/Header";
 import "./style/index.css"
 
 function Dashboard() {
 
   
-  const { tasks, loading, error } = useSelector((state) => state.tasks)
+  const { tasks, loading, error, selectedTasks } = useSelector((state) => state.tasks)
+
+
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchTasks())
@@ -62,9 +65,18 @@ function Dashboard() {
           </button>
         </div>
 
-        <div><Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/></div>
+        <div className="flex max-w-full gap-3">
+          <Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/>
 
-        <div ><Filter priority={priority} setPriority={setPriority}/></div>
+          <Filter className="" priority={priority} setPriority={setPriority}/>
+
+          {selectedTasks.length > 0 && (
+            <button className="ml-auto hover:bg-header-bg border-b-fuchsia-300 border-2"
+              onClick={ () => selectedTasks.forEach(id => dispatch(deleteTask(id)) ) }
+              >Delete Selected</button>
+          )}
+
+        </div>
 
         <div>
           <h2>My Tasks</h2>
