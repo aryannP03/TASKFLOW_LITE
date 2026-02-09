@@ -1,4 +1,4 @@
-import React, {useState , useEffect} from "react";
+import React, {useState , useEffect, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 // import { useTasks } from "../../hooks/useTasks";
@@ -19,8 +19,6 @@ function Dashboard() {
 
   
   const { tasks, loading, error, selectedTasks } = useSelector((state) => state.tasks)
-
-
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -55,10 +53,55 @@ function Dashboard() {
     })))
   }
 
+  const deleteTimerRef = useRef(null)
+  
+  //tasks are being deleted by 5 sec:
   const handleDeleteSelected = () => {
-    selectedTasks.forEach(id => dispatch(deleteTask(id)))
-    toast.success("Tasks deleted successfully");
+    // selectedTasks.forEach(id => dispatch(deleteTask(id)))
+    // toast.success("Tasks deleted successfully", {
+    //   duration: 7000
+    // } )
+
+    const idtoDelete = [...selectedTasks]
+
+    deleteTimerRef.current = setTimeout(() => {
+        idtoDelete.map(id => dispatch(deleteTask(id)))
+        toast.success("Tasks deleted Successfully ")
+    }, 5000)
+  
+  toast((t) => (
+    <div className="flex items-center gap-4">
+      <span>Tasks will be deleted</span>
+
+      <button
+        className="text-amber-400 font-semibold hover:underline"
+        onClick={() => {
+          clearTimeout(deleteTimerRef.current);
+          toast.dismiss(t.id);
+          toast.success("Delete cancelled");
+        }}>
+        Undo
+      </button>
+    </div>
+  ), {
+    duration: 5000
+  });
   }
+
+      
+  // toast((t) => (
+  //   <div className="flex gap-3 items-center w-2xl">
+  //     Test toast
+
+  //     <button
+  //       onClick={() => toast.dismiss(t.id)}
+  //       className="underline"
+  //     >
+  //       Close
+  //     </button>
+  //   </div>
+  // ));
+
 
   return (
     <div className="dashboard">
