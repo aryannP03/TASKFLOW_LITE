@@ -1,14 +1,6 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "title": "task6",
-      "status": "done",
-      "priority": "high",
-      "dueDate": "2026-02-01",
-      "assignee": "Aryan"
-    },
-    {
       "id": "2",
       "title": "create login page",
       "status": "in-progress",
@@ -21,14 +13,6 @@
       "title": "task2",
       "priority": "medium",
       "dueDate": "2026-01-31",
-      "status": "progress",
-      "assignee": "Aryan"
-    },
-    {
-      "id": "c804",
-      "title": "task3",
-      "priority": "low",
-      "dueDate": "2026-02-17",
       "status": "todo",
       "assignee": "Aryan"
     },
@@ -41,20 +25,20 @@
       "assignee": "Aryan"
     },
     {
-      "id": "1626",
-      "title": "task4",
-      "priority": "high",
-      "dueDate": "2026-01-30",
-      "status": "progress",
-      "assignee": "Aryan"
-    },
-    {
       "id": "2530",
       "title": "task5",
       "priority": "medium",
       "dueDate": "2026-01-30",
-      "status": "done",
+      "status": "todo",
       "assignee": "Aryan"
+    },
+    {
+      "id": "644b",
+      "title": "task4",
+      "priority": "high",
+      "dueDate": "2027-03-09",
+      "assignee": "Aryan",
+      "status": "progress"
     }
   ],
   "users": [

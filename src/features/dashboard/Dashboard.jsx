@@ -96,9 +96,22 @@ function Dashboard() {
           )}
 
           {showPopup && (
-          <TaskPopup onClose={() => setShowPopup(false)}>
-            <TaskForm onSubmit={handleAddTask} />
-          </TaskPopup>
+            
+            <TaskPopup onClose={() => setShowPopup(false)}>
+              <div
+                className="
+                  w-[27.5rem]
+                  min-h-[20rem]
+                  rounded-[1.25rem]
+                  bg-[#161622]
+                  p-[1.75rem]
+                  shadow-[0_1.25rem_3.75rem_rgba(0,0,0,0.6)]
+                  border border-white/10"
+              >
+              <TaskForm onSubmit={handleAddTask} />
+              </div>
+            </TaskPopup>
+          
         )}
         </div>
       </div>  
