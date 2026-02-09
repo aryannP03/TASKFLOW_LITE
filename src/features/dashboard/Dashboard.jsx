@@ -13,6 +13,7 @@ import { useDispatch, useSelector} from "react-redux"
 import { fetchTasks, addTask, deleteTask, editTask } from "../tasks/tasksSlice";
 import Header from "../../components/header/Header";
 import "./style/index.css"
+import toast from "react-hot-toast"
 
 function Dashboard() {
 
@@ -38,11 +39,6 @@ function Dashboard() {
 
   const { filteredTasks } = useTaskFilter(tasks, debouncedSearch, priority)
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  }
-
   const handleAddTask = (data) => {
     dispatch(addTask({
       ...data,
@@ -57,6 +53,11 @@ function Dashboard() {
       id,
       updatedData: { priority }
     })))
+  }
+
+  const handleDeleteSelected = () => {
+    selectedTasks.forEach(id => dispatch(deleteTask(id)))
+    toast.success("Tasks deleted successfully");
   }
 
   return (
@@ -74,14 +75,12 @@ function Dashboard() {
 
         <div className="flex max-w-full gap-3">
           <Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/>
-
           <Filter className="" priority={priority} setPriority={setPriority}/>
-
           <div className="ml-auto flex gap-2">
             {selectedTasks.length > 0 && (
                                 
                 <button className=" hover:bg-header-bg hover:text-amber-50 border-b-fuchsia-300 border-2 rounded"
-                onClick={ () => selectedTasks.forEach(id => dispatch(deleteTask(id)) ) }
+                onClick={ handleDeleteSelected }
                 >Delete Selected</button>
             )}
             {selectedTasks.length > 0 &&(
@@ -92,7 +91,6 @@ function Dashboard() {
               </select>
             )}
           </div>  
-
         </div>
 
         <div>

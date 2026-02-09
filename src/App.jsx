@@ -6,10 +6,25 @@ import ProtectedRoutes from './utils/ProtectedRoutes';
 import LoginPage from './features/login/Login';
 import WelcomePage from './features/welcome-page/WelcomePage';
 import UpdateUser from './features/update-user/UpdateUser';
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
   return (
+    <>
+    <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "#161622",
+            color: "#fff",
+            border: "1px solid rgba(255,255,255,0.1)"
+          }
+        }}
+      />
+
+
     <Routes>
       <Route path="/login" 
       element={<LoginPage />} />
@@ -27,6 +42,8 @@ function App() {
 
       <Route path="*" element={<Navigate to="/welcome-page" />} />
     </Routes>
+
+    </>
   )
 }
 
