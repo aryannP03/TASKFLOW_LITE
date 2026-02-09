@@ -4,9 +4,14 @@ import TaskPopup from "../../components/TaskPopup";
 import UseEditTask from "../../hooks/useEditTask";
 import TaskForm from "./TaskForm";
 import { CSS } from "@dnd-kit/utilities"
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTaskSelection } from "./tasksSlice"
 
 function TaskCard({ task, setTasks }) {
 
+  const dispatch = useDispatch()
+  const selectedTasks = useSelector(state => state.tasks.selectedTasks)
+  
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: task.id,
   })
@@ -28,10 +33,15 @@ function TaskCard({ task, setTasks }) {
     <div
       ref={setNodeRef}
       style={style}
-      className="task-card"
+      className="task-card relative"
     >
 
       <div {...listeners} {...attributes} className="drag-handle">☰</div>
+
+      <input type="checkbox" name="selectTask" id="selectTask" className="absolute right-3 size-4"
+        checked={selectedTasks.includes(task.id)}
+        onChange={() => dispatch(toggleTaskSelection(task.id))}
+      />
 
       {/* {console.log("this is task:", task)} */}
       <h4 className="task-title">{task.title}</h4>

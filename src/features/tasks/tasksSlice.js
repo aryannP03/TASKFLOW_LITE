@@ -59,6 +59,8 @@ const tasksSlice = createSlice({
             } else {
             state.selectedTasks.push(id)
             }
+            console.log("Current selected tasks are:", state.selectedTasks);
+            
         }
     },
 
@@ -86,4 +88,5 @@ const tasksSlice = createSlice({
     }
 })
 
+export const { toggleTaskSelection } = tasksSlice.actions
 export default tasksSlice.reducer
