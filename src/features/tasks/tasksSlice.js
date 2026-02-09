@@ -42,13 +42,25 @@ const initialState =  {
     tasks: [],
     loading: false,
     error: null,
+    selectedTasks: [],
 }
 
 
 const tasksSlice = createSlice({
     name: "tasks",
     initialState,
-    reducers: {},
+    reducers: {
+
+        toggleTaskSelection: (state, action) => {
+            const id = action.payload
+
+            if (state.selectedTasks.includes(id)) {
+            state.selectedTasks = state.selectedTasks.filter(t => t !== id)
+            } else {
+            state.selectedTasks.push(id)
+            }
+        }
+    },
 
     extraReducers: (builder) => {
         builder.addCase(fetchTasks.pending, (state) => {
