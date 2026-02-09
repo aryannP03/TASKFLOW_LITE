@@ -10,7 +10,7 @@ import Filter from "../../components/Filter";
 import useDebounce from "../../hooks/useDebounce";
 import useTaskFilter from "../../hooks/useTaskFilter";
 import { useDispatch, useSelector} from "react-redux"
-import { fetchTasks, addTask, deleteTask } from "../tasks/tasksSlice";
+import { fetchTasks, addTask, deleteTask, editTask } from "../tasks/tasksSlice";
 import Header from "../../components/header/Header";
 import "./style/index.css"
 
@@ -52,6 +52,13 @@ function Dashboard() {
     setShowPopup(false)
   }
 
+  const handlePriorityChange = (priority) => {
+    selectedTasks.map(id => dispatch(editTask({
+      id,
+      updatedData: { priority }
+    })))
+  }
+
   return (
     <div className="dashboard">
       <Header />
@@ -70,16 +77,25 @@ function Dashboard() {
 
           <Filter className="" priority={priority} setPriority={setPriority}/>
 
-          {selectedTasks.length > 0 && (
-            <button className="ml-auto hover:bg-header-bg border-b-fuchsia-300 border-2"
-              onClick={ () => selectedTasks.forEach(id => dispatch(deleteTask(id)) ) }
-              >Delete Selected</button>
-          )}
+          <div className="ml-auto flex gap-2">
+            {selectedTasks.length > 0 && (
+                                
+                <button className=" hover:bg-header-bg hover:text-amber-50 border-b-fuchsia-300 border-2 rounded"
+                onClick={ () => selectedTasks.forEach(id => dispatch(deleteTask(id)) ) }
+                >Delete Selected</button>
+            )}
+            {selectedTasks.length > 0 &&(
+              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded"> 
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            )}
+          </div>  
 
         </div>
 
         <div>
-          <h2>My Tasks</h2>
 
           {loading && <p>Loading tasks...</p>}
 
