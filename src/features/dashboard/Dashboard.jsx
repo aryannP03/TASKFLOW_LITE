@@ -1,4 +1,4 @@
-import React, {useState , useEffect} from "react";
+import React, {useState , useEffect, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 // import { useTasks } from "../../hooks/useTasks";
@@ -10,14 +10,16 @@ import Filter from "../../components/Filter";
 import useDebounce from "../../hooks/useDebounce";
 import useTaskFilter from "../../hooks/useTaskFilter";
 import { useDispatch, useSelector} from "react-redux"
-import { fetchTasks, addTask } from "../tasks/tasksSlice";
+import { fetchTasks, addTask, deleteTask, editTask } from "../tasks/tasksSlice";
 import Header from "../../components/header/Header";
 import "./style/index.css"
+import toast from "react-hot-toast"
 
 function Dashboard() {
 
   
-  const { tasks, loading, error } = useSelector((state) => state.tasks)
+  const { tasks, loading, error, selectedTasks } = useSelector((state) => state.tasks)
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchTasks())
@@ -35,11 +37,6 @@ function Dashboard() {
 
   const { filteredTasks } = useTaskFilter(tasks, debouncedSearch, priority)
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  }
-
   const handleAddTask = (data) => {
     dispatch(addTask({
       ...data,
@@ -48,6 +45,63 @@ function Dashboard() {
     }))
     setShowPopup(false)
   }
+
+  const handlePriorityChange = (priority) => {
+    selectedTasks.map(id => dispatch(editTask({
+      id,
+      updatedData: { priority }
+    })))
+  }
+
+  const deleteTimerRef = useRef(null)
+  
+  //tasks are being deleted by 5 sec:
+  const handleDeleteSelected = () => {
+    // selectedTasks.forEach(id => dispatch(deleteTask(id)))
+    // toast.success("Tasks deleted successfully", {
+    //   duration: 7000
+    // } )
+
+    const idtoDelete = [...selectedTasks]
+
+    deleteTimerRef.current = setTimeout(() => {
+        idtoDelete.map(id => dispatch(deleteTask(id)))
+        toast.success("Tasks deleted Successfully ")
+    }, 5000)
+  
+  toast((t) => (
+    <div className="flex items-center gap-4">
+      <span>Tasks will be deleted</span>
+
+      <button
+        className="text-amber-400 font-semibold hover:underline"
+        onClick={() => {
+          clearTimeout(deleteTimerRef.current);
+          toast.dismiss(t.id);
+          toast.success("Delete cancelled");
+        }}>
+        Undo
+      </button>
+    </div>
+  ), {
+    duration: 5000
+  });
+  }
+
+      
+  // toast((t) => (
+  //   <div className="flex gap-3 items-center w-2xl">
+  //     Test toast
+
+  //     <button
+  //       onClick={() => toast.dismiss(t.id)}
+  //       className="underline"
+  //     >
+  //       Close
+  //     </button>
+  //   </div>
+  // ));
+
 
   return (
     <div className="dashboard">
@@ -62,12 +116,27 @@ function Dashboard() {
           </button>
         </div>
 
-        <div><Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/></div>
-
-        <div ><Filter priority={priority} setPriority={setPriority}/></div>
+        <div className="flex max-w-full gap-3">
+          <Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/>
+          <Filter className="" priority={priority} setPriority={setPriority}/>
+          <div className="ml-auto flex gap-2">
+            {selectedTasks.length > 0 && (
+                                
+                <button className=" hover:bg-header-bg hover:text-amber-50 border-b-fuchsia-300 border-2 rounded"
+                onClick={ handleDeleteSelected }
+                >Delete Selected</button>
+            )}
+            {selectedTasks.length > 0 &&(
+              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded"> 
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            )}
+          </div>  
+        </div>
 
         <div>
-          <h2>My Tasks</h2>
 
           {loading && <p>Loading tasks...</p>}
 
@@ -84,9 +153,22 @@ function Dashboard() {
           )}
 
           {showPopup && (
-          <TaskPopup onClose={() => setShowPopup(false)}>
-            <TaskForm onSubmit={handleAddTask} />
-          </TaskPopup>
+            
+            <TaskPopup onClose={() => setShowPopup(false)}>
+              <div
+                className="
+                  w-[27.5rem]
+                  min-h-[20rem]
+                  rounded-[1.25rem]
+                  bg-[#161622]
+                  p-[1.75rem]
+                  shadow-[0_1.25rem_3.75rem_rgba(0,0,0,0.6)]
+                  border border-white/10"
+              >
+              <TaskForm onSubmit={handleAddTask} />
+              </div>
+            </TaskPopup>
+          
         )}
         </div>
       </div>  

@@ -52,7 +52,7 @@ function CommonFormField({ config, control }) {
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
-                  checked={field.value || false}
+                  checked={field.value ?? false}
                   onChange={(e) => field.onChange(e.target.checked)}
                   className="h-4 w-4 rounded border-gray-300 focus:ring-2 focus:ring-[#E4A02D]"
                 />
@@ -81,6 +81,7 @@ function CommonFormField({ config, control }) {
             <input
               {...field}
               type="text"
+              value={field.value ?? ""}
               placeholder={placeholder}
               className="w-full border p-2 focus:ring-2 focus:ring-[#E4A02D] focus:outline-none focus:border-transparent rounded-lg text-white bg-bg-input-field"
             />

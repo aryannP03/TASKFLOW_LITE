@@ -37,18 +37,42 @@ export const editTask = createAsyncThunk("editTask",
     }
 )
 
+export const deleteTask = createAsyncThunk("deleteTask",
+  async (id) => {
+    await fetch(`${API_URL}/${id}`, {
+      method: "DELETE"
+    })
+
+    return id
+  }
+)
+
 
 const initialState =  {
     tasks: [],
     loading: false,
     error: null,
+    selectedTasks: [],
 }
 
 
 const tasksSlice = createSlice({
     name: "tasks",
     initialState,
-    reducers: {},
+    reducers: {
+
+        toggleTaskSelection: (state, action) => {
+            const id = action.payload
+
+            if (state.selectedTasks.includes(id)) {
+            state.selectedTasks = state.selectedTasks.filter(t => t !== id)
+            } else {
+            state.selectedTasks.push(id)
+            }
+            console.log("Current selected tasks are:", state.selectedTasks);
+            
+        }
+    },
 
     extraReducers: (builder) => {
         builder.addCase(fetchTasks.pending, (state) => {
@@ -71,7 +95,11 @@ const tasksSlice = createSlice({
             const task = state.tasks.find((task) => task.id===id)
             Object.assign(task, updatedData)
         })
+        .addCase(deleteTask.fulfilled, (state, action) => {
+            state.tasks = state.tasks.filter(task => task.id !== action.payload)
+        })
     }
 })
 
+export const { toggleTaskSelection } = tasksSlice.actions
 export default tasksSlice.reducer

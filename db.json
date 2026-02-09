@@ -1,14 +1,6 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "title": "task6",
-      "status": "done",
-      "priority": "high",
-      "dueDate": "2026-02-01",
-      "assignee": "Aryan"
-    },
-    {
       "id": "2",
       "title": "create login page",
       "status": "in-progress",
@@ -17,52 +9,52 @@
       "assignee": "Aryan"
     },
     {
-      "id": "2d2b",
+      "id": "9958",
       "title": "task2",
       "priority": "medium",
-      "dueDate": "2026-01-31",
-      "status": "todo",
-      "assignee": "Aryan"
+      "dueDate": "2026-02-10",
+      "assignee": "Aryan",
+      "status": "done"
     },
     {
-      "id": "c804",
-      "title": "task3",
+      "id": "fe5e",
+      "title": "task4",
       "priority": "low",
-      "dueDate": "2026-02-17",
-      "status": "todo",
-      "assignee": "Aryan"
+      "dueDate": "2026-02-26",
+      "assignee": "Aryan",
+      "status": "progress"
     },
     {
-      "id": "33b0",
+      "id": "90cc",
       "title": "task1",
       "priority": "low",
-      "dueDate": "2026-03-18",
-      "status": "done",
-      "assignee": "Aryan"
-    },
-    {
-      "id": "1626",
-      "title": "task4",
-      "priority": "high",
-      "dueDate": "2026-01-30",
-      "status": "progress",
-      "assignee": "Aryan"
-    },
-    {
-      "id": "2530",
-      "title": "task5",
-      "priority": "medium",
-      "dueDate": "2026-01-30",
-      "status": "done",
-      "assignee": "Aryan"
-    },
-    {
-      "id": "ba35",
-      "title": "task7",
-      "priority": "high",
-      "dueDate": "2026-02-02",
+      "dueDate": "2026-02-20",
       "assignee": "Aryan",
       "status": "todo"
+    },
+    {
+      "id": "8427",
+      "title": "task3",
+      "priority": "low",
+      "dueDate": "2026-02-25",
+      "assignee": "Aryan",
+      "status": "done"
+    },
+    {
+      "id": "47b4",
+      "title": "task6",
+      "priority": "low",
+      "dueDate": "2026-02-25",
+      "assignee": "Aryan",
+      "status": "todo"
+    },
+    {
+      "id": "63bb",
+      "title": "task7",
+      "priority": "low",
+      "dueDate": "2026-02-26",
+      "assignee": "Aryan",
+      "status": "progress"
     }
   ],
   "users": [
@@ -225,6 +217,36 @@
       "username": "testusr4",
       "above18": true,
       "phone": "112233445566"
+    },
+    {
+      "id": "713e",
+      "email": "abc",
+      "password": "qwerty",
+      "username": "test45",
+      "above18": true,
+      "phone": "112233445566"
+    },
+    {
+      "id": "70a1",
+      "email": "abc",
+      "password": "abs",
+      "username": "test45",
+      "above18": true,
+      "phone": "112233445566"
+    },
+    {
+      "id": "b3c8",
+      "email": "abc@345",
+      "password": "abcx",
+      "username": "Aryan",
+      "above18": true,
+      "phone": "1112223334",
+      "gender": "male",
+      "address": "aswdd",
+      "zipcode": "234455",
+      "state": "new-delhi",
+      "fullname": "Aryan Patel",
+      "dob": "11/10/2204"
     }
   ]
 }
