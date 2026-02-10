@@ -1,8 +1,7 @@
 
-.dashboard {
+ /* .dashboard {
   min-height: 100vh;
   width: 100%;
-  padding: 32px 0;
 }
 
 .dashboard-container {
@@ -99,9 +98,9 @@
   margin-bottom: 1rem;
   font-size: 1.1rem;
   font-weight: 600;
-}
+} */
 
-.column {
+/* .column {
   width: 260px;
   min-height: 420px;
   background: #371650;
@@ -109,16 +108,16 @@
   border-radius: 12px;
   padding: 16px;
   box-sizing: border-box;
-}
+} */
 
 
-.empty-text {
+/* .empty-text {
   color: #9ca3af;
   font-size: 0.9rem;
   text-align: center;
-}
+} */
 
-.priority {
+/* .priority {
   font-size: 0.85rem;
   margin-bottom: 4px;
 }
@@ -136,16 +135,16 @@
 .priority.low {
   color: #16a34a;
   font-weight: 500;
-}
+} */
 
-*{
+/* *{
   box-sizing: border-box;
-}
+} */
 
-.drag-handle{
+/* .drag-handle{
   display: inline-block;
   cursor: grab;
-}
+} */
 
 
 /* 

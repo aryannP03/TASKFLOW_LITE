@@ -3,8 +3,8 @@ function Filter({ priority, setPriority}) {
     
     return (
         <div>
-            <label className="filter-task" >Filter : </label>
-                <select value={priority} onChange= {(e) => setPriority(e.target.value)}>
+            <label className="filter-task text-white text-xl" >Filter : </label>
+                <select className="text-white border rounded-lg bg-card-bg" value={priority} onChange= {(e) => setPriority(e.target.value)}>
                     <option value="all">All</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>

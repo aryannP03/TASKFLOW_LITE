@@ -95,30 +95,31 @@ function Dashboard() {
   }
 
   return (
-    <div className="dashboard bg-mainbg">
+    <div className="bg-mainbg min-h-screen w-full">
       <Header />
-      <div className="dashboard-container">
+      <div className="max-w-[75rem] mx-auto px-8">
         
         
 
         <div style={{ margin: "16px 0" }}>
-          <button className="add-task-btn" onClick={() => setShowPopup(true)}>
+          <button className="bg-save-update-btn text-white border-0 py-2.5 px-5 rounded-lg cursor-pointer mb-4" 
+          onClick={() => setShowPopup(true)}>
             + Add Task
           </button>
         </div>
 
-        <div className="flex max-w-full gap-3">
+        <div className="flex flex-col h-fit p-3 items-start md:flex-row max-w-full gap-3 bg-card-column-bg md:h-15 md:items-center rounded-lg">
           <Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/>
           <Filter className="" priority={priority} setPriority={setPriority}/>
-          <div className="ml-auto flex gap-2">
+          <div className="md:ml-auto flex gap-2 text-white text-xl">
             {selectedTasks.length > 0 && (
                                 
-                <button className=" hover:bg-header-bg hover:text-amber-50 border-b-fuchsia-300 border-2 rounded"
+                <button className=" hover:bg-header-bg hover:text-amber-50 border-b-fuchsia-300 border-2 rounded-lg px-2"
                 onClick={ handleDeleteSelected }
                 >Delete Selected</button>
             )}
             {selectedTasks.length > 0 &&(
-              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded"> 
+              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded-lg mr-4 text-center"> 
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>

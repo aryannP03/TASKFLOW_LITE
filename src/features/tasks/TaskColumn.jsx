@@ -10,12 +10,15 @@ function TaskColumn({ title, tasks, type, setTasks }) {
     id: type,
   })
   return (
-    <div ref={setNodeRef} className= {`column${type}`}>
-      <h3 onClick={() => setIsOpen(prev => !prev)} className="cursor-pointer hover:bg-red-100">{title}</h3>
+    <div ref={setNodeRef} className= {"bg-card-column-bg rounded-[1.25rem] p-4"}>
+          <h3 onClick={() => setIsOpen(prev => !prev)} 
+          className=" bg-card-col-head border-2 border-card-col-head-border 
+          rounded-2xl max-w-[19rem] h-[4rem] cursor-pointer text-center align-middle  mt-1 mb-4 mx-3.5 text-[1.75rem] font-medium text-white flex items-center justify-center "
+          >{title}</h3>
 
       {isOpen && (
         <>
-        {tasks.length === 0 && <p className="empty-text">No tasks</p>}
+        {tasks.length === 0 && <p className="text-gray-400 text-[0.9rem] text-center">No tasks</p>}
 
         {tasks.map((task) => (
           <TaskCard key={task.id} task={task} setTasks={setTasks} />               
