@@ -22,7 +22,7 @@
 }
 
 .task-card {
-  background: #f9fafb;
+  background: #461446;
   border-radius: 12px;
   padding: 14px;
   margin-bottom: 12px;
@@ -73,7 +73,7 @@
 .columntodo,
 .columnprogress,
 .columndone {
-  background: #fafafa;
+  background: #371650;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   padding: 1rem;
@@ -104,7 +104,7 @@
 .column {
   width: 260px;
   min-height: 420px;
-  background: #ffffff;
+  background: #371650;
   border: 2px dashed #d0d7e2;
   border-radius: 12px;
   padding: 16px;

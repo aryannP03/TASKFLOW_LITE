@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import TaskCard from "./TaskCard";
 import { useDroppable } from "@dnd-kit/core"
-import Filter from "../../components/Filter";
 
 function TaskColumn({ title, tasks, type, setTasks }) {
 
+  const [isOpen, setIsOpen] = useState(true)
+  
   const{ setNodeRef } = useDroppable({
     id: type,
   })
   return (
-    <div ref={setNodeRef} className={`column${type}`}>
-      <h3>{title}</h3>
+    <div ref={setNodeRef} className= {`column${type}`}>
+      <h3 onClick={() => setIsOpen(prev => !prev)} className="cursor-pointer hover:bg-red-100">{title}</h3>
 
-      {tasks.length === 0 && <p className="empty-text">No tasks</p>}
+      {isOpen && (
+        <>
+        {tasks.length === 0 && <p className="empty-text">No tasks</p>}
 
-      {tasks.map((task) => (
-        <TaskCard key={task.id} task={task} setTasks={setTasks} />               
-      ))}
-      
+        {tasks.map((task) => (
+          <TaskCard key={task.id} task={task} setTasks={setTasks} />               
+        ))}
+        </>
+      )}
     </div>
   );
 }
