@@ -5,7 +5,7 @@ import UseEditTask from "../../hooks/useEditTask";
 import TaskForm from "./TaskForm";
 import { CSS } from "@dnd-kit/utilities"
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTaskSelection } from "./tasksSlice"
+import { toggleTaskSelection, deleteTask } from "./tasksSlice"
 
 function TaskCard({ task, setTasks }) {
 
@@ -52,10 +52,16 @@ function TaskCard({ task, setTasks }) {
       <p className="due-date">Due Date: {task.dueDate}</p>
       <p className="assignee">Assignee: {task.assignee}</p>
       <div className="absolute right-3">  
+
         <button
           className="edit-btn"
           onClick={() => setShowEditPopup(true)} 
         ><img src="/assets/edit.png" alt="edit" className="btn-icon" />
+        </button>
+        <button
+          className="delete-btn"
+          onClick={() => dispatch(deleteTask(task.id))} 
+        ><img src="/assets/delete-btn.png" alt="edit" className="btn-icon ml-1.5" />
         </button>
       </div>
 
