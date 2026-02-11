@@ -2,15 +2,15 @@ import React, {useState , useEffect, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import TaskBoard from "../tasks/TaskBoard";
-import TaskPopup from "../../components/TaskPopup";
+import TaskPopup from "../../common/modal/TaskPopup";
 import TaskForm from "../tasks/TaskForm";
-import Searchtask from "../../components/Search";
-import Filter from "../../components/Filter";
+import Searchtask from "../../common/search/Search";
+import Filter from "../../common/filter/Filter";
 import useDebounce from "../../hooks/useDebounce";
 import useTaskFilter from "../../hooks/useTaskFilter";
 import { useDispatch, useSelector} from "react-redux"
 import { fetchTasks, addTask, deleteTask, editTask } from "../tasks/tasksSlice";
-import Header from "../../components/header/Header";
+import Header from "../../common/header/Header";
 import "./style/index.css"
 import toast from "react-hot-toast"
 

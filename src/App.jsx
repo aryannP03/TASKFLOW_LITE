@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.css'
-import Dashboard from "./features/dashboard/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoutes from './utils/ProtectedRoutes';
-import LoginPage from './features/login/Login';
-import WelcomePage from './features/welcome-page/WelcomePage';
-import UpdateUser from './features/update-user/UpdateUser';
+import LoginPage from './components/login/Login';
+import WelcomePage from './components/welcome-page/WelcomePage';
+import UpdateUser from './components/update-user/UpdateUser';
 import { Toaster } from "react-hot-toast";
 
 

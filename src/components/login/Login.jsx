@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import USER_LOGIN from "./constants";
-import CommonFormField from "../../components/CommonFormField";
+import CommonFormField from "../../common/common-form-fields/CommonFormField";
 
 function LoginPage() {
   const { login } = useAuth();

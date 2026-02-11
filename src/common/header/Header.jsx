@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import TaskPopup from "../TaskPopup";
-import CommonForm from "../CommonFormField";
-import CommonFormField from "../CommonFormField";
-import LoginPage from "../../features/login/Login";
-import SignupPage from "../../features/sign-up/SignUp";
+import TaskPopup from "../modal/TaskPopup";;
+import LoginPage from "../../components/login/Login";
+import SignupPage from "../../components/sign-up/SignUp";
 
 
 function Header() {

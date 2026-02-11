@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useDraggable } from "@dnd-kit/core"
-import TaskPopup from "../../components/TaskPopup";
+import TaskPopup from "../../common/modal/TaskPopup";
 import UseEditTask from "../../hooks/useEditTask";
 import TaskForm from "./TaskForm";
 import { CSS } from "@dnd-kit/utilities"

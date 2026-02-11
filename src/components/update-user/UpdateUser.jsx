@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import CommonFormField from "../../components/CommonFormField";
+import CommonFormField from "../../common/common-form-fields/CommonFormField";
 import USER_UPDATE from "./constants";
 import { editUser } from "../usersSlice";
 

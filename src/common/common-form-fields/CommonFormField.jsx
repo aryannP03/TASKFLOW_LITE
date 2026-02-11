@@ -1,8 +1,8 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import Select from "./select";
-import Checkbox from "./checkbox";
-import Input from "./input";
+import Select from "../select";
+import Checkbox from "../checkbox";
+import Input from "../input";
 
 function CommonFormField({ config, control }) {
   const {
