@@ -63,6 +63,10 @@ const usersSlice = createSlice({
         .addCase(fetchUsers.fulfilled, (state, action) => {
             state.loading = false
             state.users = action.payload
+
+            if (action.payload.length > 0 && !state.currentUser) {
+                state.currentUser = action.payload[0]
+             }
         })
         .addCase(addUser.fulfilled, (state, action) =>{
             state.users.push(action.payload)
@@ -72,6 +76,10 @@ const usersSlice = createSlice({
             const { id, updatedData} = action.payload
             const user = state.users.find((u) => u.id===id)
             Object.assign(user, updatedData)
+
+            if (state.currentUser?.id === id) {
+            Object.assign(state.currentUser, updatedData)
+            }
         })
     }
 })

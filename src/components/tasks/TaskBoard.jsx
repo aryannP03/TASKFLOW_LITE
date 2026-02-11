@@ -41,7 +41,7 @@ function TaskBoard({ tasks }) {
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className="board">
+      <div className="grid grid-cols-3 gap-6 mt-6 max-md:grid-cols-2 max-sm:grid-cols-1">
           <TaskColumn title="To Do" tasks={todoTasks} type="todo" />
           <TaskColumn title="In Progress" tasks={inProgressTasks} type="progress"/>
           <TaskColumn title="Done" tasks={doneTasks} type="done"/>

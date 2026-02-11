@@ -1,17 +1,16 @@
 import React, {useState , useEffect, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-// import { useTasks } from "../../hooks/useTasks";
 import TaskBoard from "../tasks/TaskBoard";
-import TaskPopup from "../../components/TaskPopup";
+import TaskPopup from "../../common/modal/TaskPopup";
 import TaskForm from "../tasks/TaskForm";
-import Searchtask from "../../components/Search";
-import Filter from "../../components/Filter";
+import Searchtask from "../../common/search/Search";
+import Filter from "../../common/filter/Filter";
 import useDebounce from "../../hooks/useDebounce";
 import useTaskFilter from "../../hooks/useTaskFilter";
 import { useDispatch, useSelector} from "react-redux"
 import { fetchTasks, addTask, deleteTask, editTask } from "../tasks/tasksSlice";
-import Header from "../../components/header/Header";
+import Header from "../../common/header/Header";
 import "./style/index.css"
 import toast from "react-hot-toast"
 
@@ -27,7 +26,6 @@ function Dashboard() {
 
   const { logout } = useAuth();
   const navigate = useNavigate();
-  // const { tasks, loading, error, addTask, setTasks } = useTasks();
   const [showPopup, setShowPopup] = useState(false);
 
   const [priority, setPriority] = useState("")
@@ -54,20 +52,22 @@ function Dashboard() {
   }
 
   const deleteTimerRef = useRef(null)
+  const deletedTasksRef = useRef([])
   
   //tasks are being deleted by 5 sec:
   const handleDeleteSelected = () => {
-    // selectedTasks.forEach(id => dispatch(deleteTask(id)))
-    // toast.success("Tasks deleted successfully", {
-    //   duration: 7000
-    // } )
+
 
     const idtoDelete = [...selectedTasks]
+    
+    deletedTasksRef.current = tasks.filter(task =>
+      selectedTasks.includes(task.id)
+    )
 
+    idtoDelete.map(id => dispatch(deleteTask(id)))
     deleteTimerRef.current = setTimeout(() => {
-        idtoDelete.map(id => dispatch(deleteTask(id)))
-        toast.success("Tasks deleted Successfully ")
-    }, 5000)
+          deletedTasksRef.current = []
+     }, 5000)
   
   toast((t) => (
     <div className="flex items-center gap-4">
@@ -77,8 +77,14 @@ function Dashboard() {
         className="text-amber-400 font-semibold hover:underline"
         onClick={() => {
           clearTimeout(deleteTimerRef.current);
-          toast.dismiss(t.id);
-          toast.success("Delete cancelled");
+          
+          deletedTasksRef.current.forEach(task => {
+            dispatch(addTask(task))
+          })
+
+          deletedTasksRef.current = []
+          toast.dismiss(t.id)
+          toast.success("Tasks Restored")
         }}>
         Undo
       </button>
@@ -88,46 +94,32 @@ function Dashboard() {
   });
   }
 
-      
-  // toast((t) => (
-  //   <div className="flex gap-3 items-center w-2xl">
-  //     Test toast
-
-  //     <button
-  //       onClick={() => toast.dismiss(t.id)}
-  //       className="underline"
-  //     >
-  //       Close
-  //     </button>
-  //   </div>
-  // ));
-
-
   return (
-    <div className="dashboard">
+    <div className="bg-mainbg min-h-screen w-full">
       <Header />
-      <div className="dashboard-container">
+      <div className="max-w-[75rem] mx-auto px-8">
         
         
 
         <div style={{ margin: "16px 0" }}>
-          <button className="add-task-btn" onClick={() => setShowPopup(true)}>
+          <button className="bg-save-update-btn text-white border-0 py-2.5 px-5 rounded-lg cursor-pointer mb-4" 
+          onClick={() => setShowPopup(true)}>
             + Add Task
           </button>
         </div>
 
-        <div className="flex max-w-full gap-3">
+        <div className="flex flex-col h-fit p-3 items-start md:flex-row max-w-full gap-3 bg-card-column-bg md:h-15 md:items-center rounded-lg">
           <Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/>
           <Filter className="" priority={priority} setPriority={setPriority}/>
-          <div className="ml-auto flex gap-2">
+          <div className="md:ml-auto flex gap-2 text-white text-xl">
             {selectedTasks.length > 0 && (
                                 
-                <button className=" hover:bg-header-bg hover:text-amber-50 border-b-fuchsia-300 border-2 rounded"
+                <button className=" hover:bg-header-bg hover:text-amber-50 border-b-fuchsia-300 border-2 rounded-lg px-2"
                 onClick={ handleDeleteSelected }
                 >Delete Selected</button>
             )}
             {selectedTasks.length > 0 &&(
-              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded"> 
+              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded-lg mr-4 text-center"> 
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
@@ -145,8 +137,6 @@ function Dashboard() {
           {!loading && !error && tasks.length === 0 && (
             <p>No tasks found.</p>
           )}
-
-          {/* {console.log("filtered tasks are :", filteredTasks)} */}
           
           {!loading && !error && tasks.length > 0 && (
             <TaskBoard tasks={filteredTasks} />

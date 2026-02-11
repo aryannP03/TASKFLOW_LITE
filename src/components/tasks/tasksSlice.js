@@ -71,9 +71,12 @@ const tasksSlice = createSlice({
             }
             console.log("Current selected tasks are:", state.selectedTasks);
             
-        }
+        },
+        // toggleTaskCards: (state, action) => {
+        //     const []
+        // }
     },
-
+    
     extraReducers: (builder) => {
         builder.addCase(fetchTasks.pending, (state) => {
             state.loading = true
@@ -97,6 +100,7 @@ const tasksSlice = createSlice({
         })
         .addCase(deleteTask.fulfilled, (state, action) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload)
+            state.selectedTasks = state.selectedTasks.filter(id => id !== action.payload)
         })
     }
 })

@@ -1,0 +1,15 @@
+
+
+function Searchtask( { searchvalue, setSearchValue } ) { 
+
+    return (
+        <div className='search-task text-white text-xl'>
+            <label>Search : </label>
+            <input type="text" value={searchvalue}
+                onChange={(e) => setSearchValue(e.target.value)}  
+                className="border-2 border-white rounded-lg"/>
+        </div>
+    )
+}
+
+export default Searchtask

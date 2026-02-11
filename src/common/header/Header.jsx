@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import TaskPopup from "../TaskPopup";
-import CommonForm from "../CommonFormField";
-import CommonFormField from "../CommonFormField";
-import LoginPage from "../../features/login/Login";
-import SignupPage from "../../features/sign-up/SignUp";
+import TaskPopup from "../modal/TaskPopup";;
+import LoginPage from "../../components/login/Login";
+import SignupPage from "../../components/sign-up/SignUp";
 
 
 function Header() {
@@ -18,7 +16,7 @@ function Header() {
   
     return (
     <>
-      <div className="bg-header-bg align-middle text-header-text">  
+      <div className="bg-header-bg align-middle text-header-text sticky top-0">  
         <nav className="flex items-start w-full px-6 sm:flex-row h-20 ">
           <h1 className="mt-6 flex items-center mr-auto gap-2 text-xl font-extrabold sm:text-2xl">TaskFlow Lite</h1>
 
