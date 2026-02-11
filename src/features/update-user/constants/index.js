@@ -15,7 +15,7 @@ const USER_UPDATE = [
   },
   {
     name: 'email',
-    label: 'email ',
+    label: 'E-Mail ID',
     type: 'email',
     placeholder: 'Enter your email',
     rules: { required: 'Email is required!' }

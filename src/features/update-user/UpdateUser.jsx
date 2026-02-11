@@ -28,6 +28,8 @@ function UpdateUser() {
       address: "",
       zipcode: "",
       state: "",
+      dob: "",
+      fullname: "",
       
     },
   });
@@ -35,14 +37,17 @@ function UpdateUser() {
   useEffect(() => {
     if (user) {
       reset({
-        email: user.email || "",
-        username: user.username || "",
-        phone: user.phone || "",
-        above18: user.above18 || false,
-        gender: user.gender || "",
-        address: user.address || "",
-        zipcode: user.zipcode || "",
-        state: user.state || "",
+        email: user.email,        
+        username: user.username,
+        phone: user.phone,
+        above18: user.above18,
+        gender: user.gender,
+        address: user.address,
+        zipcode: user.zipcode,
+        state: user.state,
+        dob: user.dob,
+        fullname: user.fullname,
+
         
       });
     }
@@ -71,7 +76,7 @@ function UpdateUser() {
               />
 
               <h3 className="text-base sm:text-lg font-medium text-white">
-                Jason Miller
+                 {user?.fullname || "User"}
               </h3>
 
               <p className="text-sm text-white/70">
