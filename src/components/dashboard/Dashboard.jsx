@@ -56,8 +56,7 @@ function Dashboard() {
   
   //tasks are being deleted by 5 sec:
   const handleDeleteSelected = () => {
-
-
+    
     const idtoDelete = [...selectedTasks]
     
     deletedTasksRef.current = tasks.filter(task =>
@@ -65,31 +64,32 @@ function Dashboard() {
     )
 
     idtoDelete.map(id => dispatch(deleteTask(id)))
+    
     deleteTimerRef.current = setTimeout(() => {
           deletedTasksRef.current = []
      }, 5000)
   
-  toast((t) => (
-    <div className="flex items-center gap-4">
-      <span>Tasks will be deleted</span>
+    toast((t) => (
+      <div className="flex items-center gap-4">
+        <span>Tasks will be deleted</span>
 
-      <button
-        className="text-amber-400 font-semibold hover:underline"
-        onClick={() => {
-          clearTimeout(deleteTimerRef.current);
-          
-          deletedTasksRef.current.forEach(task => {
-            dispatch(addTask(task))
-          })
+        <button
+          className="text-amber-400 font-semibold hover:underline"
+          onClick={() => {
+            clearTimeout(deleteTimerRef.current);
+            
+            deletedTasksRef.current.forEach(task => {
+              dispatch(addTask(task))
+            })
 
-          deletedTasksRef.current = []
-          toast.dismiss(t.id)
-          toast.success("Tasks Restored")
-        }}>
-        Undo
-      </button>
-    </div>
-  ), {
+            deletedTasksRef.current = []
+            toast.dismiss(t.id)
+            toast.success("Tasks Restored")
+          }}>
+          Undo
+        </button>
+      </div>
+    ), {
     duration: 5000
   });
   }
@@ -102,24 +102,25 @@ function Dashboard() {
         
 
         <div style={{ margin: "16px 0" }}>
-          <button className="bg-save-update-btn text-white border-0 py-2.5 px-5 rounded-lg cursor-pointer mb-4" 
-          onClick={() => setShowPopup(true)}>
-            + Add Task
-          </button>
+          
         </div>
 
         <div className="flex flex-col h-fit p-3 items-start md:flex-row max-w-full gap-3 bg-card-column-bg md:h-15 md:items-center rounded-lg">
+          <button className="bg-save-update-btn hover:brightness-75 text-white rounded-lg cursor-pointer mb-4 p-2 mt-4 " 
+          onClick={() => setShowPopup(true)}>
+            + Add Task
+          </button>
           <Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/>
           <Filter className="" priority={priority} setPriority={setPriority}/>
           <div className="md:ml-auto flex gap-2 text-white text-xl">
             {selectedTasks.length > 0 && (
                                 
-                <button className=" hover:bg-header-bg hover:text-amber-50 border-b-fuchsia-300 border-2 rounded-lg px-2"
+                <button className="bg-save-update-btn hover:brightness-75 text-white text-lg rounded-lg p-1.5 "
                 onClick={ handleDeleteSelected }
                 >Delete Selected</button>
             )}
             {selectedTasks.length > 0 &&(
-              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded-lg mr-4 text-center"> 
+              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded-lg mr-4 text-center bg-card-bg px-3 py-1 text-lg"> 
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
