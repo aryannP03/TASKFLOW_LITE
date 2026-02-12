@@ -106,27 +106,27 @@ function Dashboard() {
         </div>
 
         <div className="flex flex-col h-fit p-3 items-start md:flex-row max-w-full gap-3 bg-card-column-bg md:h-15 md:items-center rounded-lg">
-          <button className="bg-save-update-btn hover:brightness-75 text-white rounded-lg cursor-pointer mb-4 p-2 mt-4 " 
-          onClick={() => setShowPopup(true)}>
-            + Add Task
-          </button>
           <Searchtask searchvalue={searchvalue} setSearchValue={setSearchValue}/>
           <Filter className="" priority={priority} setPriority={setPriority}/>
           <div className="md:ml-auto flex gap-2 text-white text-xl">
             {selectedTasks.length > 0 && (
                                 
-                <button className="bg-save-update-btn hover:brightness-75 text-white text-lg rounded-lg p-1.5 "
+                <button className="bg-save-update-btn hover:brightness-75 text-white text-md sm:text-lg rounded-lg  p-0.5 sm:p-1.5 "
                 onClick={ handleDeleteSelected }
                 >Delete Selected</button>
             )}
             {selectedTasks.length > 0 &&(
-              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded-lg mr-4 text-center bg-card-bg px-3 py-1 text-lg"> 
+              <select onChange={ (e)=> handlePriorityChange(e.target.value)} className="border-b-fuchsia-300 border-2 rounded-lg  text-center bg-card-bg px-3 py-1 text-lg"> 
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
               </select>
             )}
           </div>  
+          <button className="bg-save-update-btn hover:brightness-75 text-white rounded-lg cursor-pointer sm:mb-4 p-2 sm:mt-4 " 
+          onClick={() => setShowPopup(true)}>
+            + Add Task
+          </button>
         </div>
 
         <div>
