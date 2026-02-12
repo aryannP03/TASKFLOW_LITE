@@ -375,6 +375,20 @@
       "username": "test45",
       "above18": true,
       "phone": "101112131415"
+    },
+    {
+      "id": "8302",
+      "email": "asbcs@gms",
+      "password": "cvbnmc",
+      "username": "asdweert",
+      "above18": true,
+      "phone": "1234554321",
+      "gender": "male",
+      "address": "aswerty",
+      "zipcode": "122321",
+      "state": "UP",
+      "dob": "11/10/2204",
+      "fullname": "Aryan"
     }
   ]
 }
