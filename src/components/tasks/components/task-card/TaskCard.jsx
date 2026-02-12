@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import { useDraggable } from "@dnd-kit/core"
-import TaskPopup from "../../common/modal/TaskPopup";
-import UseEditTask from "../../hooks/useEditTask";
-import TaskForm from "./TaskForm";
+import TaskPopup from "../../../../common/modal/TaskPopup";
+import TaskForm from "../task-form/TaskForm";
 import { CSS } from "@dnd-kit/utilities"
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTaskSelection, deleteTask } from "./tasksSlice"
+import { toggleTaskSelection, deleteTask } from "../tasksSlice"
+import UseEditTask from "../../../../hooks/useEditTask";
 
 function TaskCard({ task, setTasks }) {
 

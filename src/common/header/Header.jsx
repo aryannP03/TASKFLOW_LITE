@@ -39,21 +39,7 @@ function Header() {
           )}
 
           {isAuthenticated && (
-            // <div className="flex gap-4 mt-7 md:mt-4">  
-            //   <button 
-            //   className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
-            //             hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"   
-            //   onClick={() => logout()}>
-            //     Logout
-            //   </button>
-            //   <button 
-            //   className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
-            //             hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
-            //   onClick={() => navigate('/update-user')}>
-            //     Update User
-            //   </button>            
-            // </div>
-
+            
             <div className="relative mt-4 mr-7 text-2xl">
               
                 <button onClick={() => setshowDropDown(prev => !prev)}
@@ -65,13 +51,13 @@ function Header() {
                     />
                 </button>
                 {showDropDown && (
-                  <div className="absolute top-16 right-0.5 text-xl bg-fuchsia-800 w-50">
+                  <div className="absolute top-16 right-0.5 text-xl bg-fuchsia-800 w-50 border-2">
                     <button 
-                      className="w-full hover:bg-header-bg border-b-fuchsia-300 border-2"
+                      className="w-full hover:bg-header-bg border-b-fuchsia-300 border-b-2"
                       onClick={() => navigate('/update-user') }
                       >Profile</button>
                     <button 
-                      className="w-full hover:bg-header-bg border-b-fuchsia-300 border-2"
+                      className="w-full hover:bg-header-bg border-b-fuchsia-300"
                       onClick={() => logout()}
                       >Logout</button>
                   </div> 

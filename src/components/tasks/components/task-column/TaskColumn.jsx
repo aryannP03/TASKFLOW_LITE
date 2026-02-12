@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TaskCard from "./TaskCard";
+import TaskCard from "../task-card/TaskCard";
 import { useDroppable } from "@dnd-kit/core"
 import { SlArrowDown, SlArrowRight } from "react-icons/sl";
 
@@ -15,7 +15,7 @@ function TaskColumn({ title, tasks, type, setTasks }) {
           <h3 onClick={() => setIsOpen(prev => !prev)} 
           className=" bg-card-col-head border-2 border-card-col-head-border 
           rounded-2xl max-w-[19rem] h-[4rem] cursor-pointer text-center align-middle  mt-1 mb-4 mx-3.5 text-[1.75rem] font-medium text-white flex items-center justify-center "
-          >{title}{isOpen?<SlArrowDown className="ml-2 size-7" />:<SlArrowRight className="ml-2 size-7"/>}</h3>
+          >{title}{isOpen?<SlArrowDown className="ml-2 size-6" />:<SlArrowRight className="ml-2 size-5"/>}</h3>
 
       {isOpen && (
         <>
