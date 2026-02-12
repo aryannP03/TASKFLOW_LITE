@@ -9,6 +9,14 @@
       "assignee": "Aryan"
     },
     {
+      "id": "40ab",
+      "title": "task2",
+      "priority": "low",
+      "dueDate": "2026-02-28",
+      "assignee": "Aryan",
+      "status": "todo"
+    },
+    {
       "id": "2d44",
       "title": "task-test",
       "priority": "medium",
@@ -17,20 +25,12 @@
       "status": "done"
     },
     {
-      "id": "64f2",
-      "title": "task3",
+      "id": "749c",
+      "title": "task1",
       "priority": "low",
       "dueDate": "2026-02-27",
       "assignee": "Aryan",
       "status": "progress"
-    },
-    {
-      "id": "40ab",
-      "title": "task2",
-      "priority": "low",
-      "dueDate": "2026-02-28",
-      "assignee": "Aryan",
-      "status": "todo"
     }
   ],
   "users": [
@@ -594,7 +594,13 @@
       "password": "aswe",
       "username": "asdweert",
       "above18": true,
-      "phone": "1233211233"
+      "phone": "1233211233",
+      "gender": "male",
+      "address": "aswe",
+      "zipcode": "1234",
+      "state": "UP",
+      "dob": "11/10/2203",
+      "fullname": "Aryab"
     }
   ]
 }
