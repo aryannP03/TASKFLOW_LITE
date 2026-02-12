@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import TaskColumn from "./TaskColumn";
+import TaskColumn from "./task-column/TaskColumn";
 import {DndContext} from '@dnd-kit/core'
 import { useDispatch } from "react-redux";
 import { editTask } from "./tasksSlice";
