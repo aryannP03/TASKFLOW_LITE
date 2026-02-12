@@ -4,8 +4,8 @@ import TaskPopup from "../../../../common/modal/TaskPopup";
 import TaskForm from "../task-form/TaskForm";
 import { CSS } from "@dnd-kit/utilities"
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTaskSelection, deleteTask } from "../tasksSlice"
-import UseEditTask from "../../../../hooks/useEditTask";
+import { toggleTaskSelection, deleteTask, editTask } from "../tasksSlice"
+// import UseEditTask from "../../../../hooks/useEditTask";
 
 function TaskCard({ task, setTasks }) {
 
@@ -21,10 +21,11 @@ function TaskCard({ task, setTasks }) {
   };
 
   const [showEditPopup, setShowEditPopup] = useState(false)
-  const { editTask } = UseEditTask(setTasks)
+  // const { editTask } = UseEditTask(setTasks)
 
   const handleEditSubmit = (updatedData) => {
-    editTask(task.id, updatedData)
+    // editTask(task.id, updatedData)
+    dispatch(editTask({id: task.id, updatedData}))
     setShowEditPopup(false)
   }
 
