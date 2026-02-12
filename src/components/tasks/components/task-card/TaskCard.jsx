@@ -5,6 +5,7 @@ import TaskForm from "../task-form/TaskForm";
 import { CSS } from "@dnd-kit/utilities"
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTaskSelection, deleteTask, editTask } from "../tasksSlice"
+import toast from "react-hot-toast";
 // import UseEditTask from "../../../../hooks/useEditTask";
 
 function TaskCard({ task, setTasks }) {
@@ -61,7 +62,9 @@ function TaskCard({ task, setTasks }) {
         </button>
         <button
           className="delete-btn"
-          onClick={() => dispatch(deleteTask(task.id))} 
+          onClick={() => {
+            dispatch(deleteTask(task.id))
+            toast.success("Task Deleted")}} 
         ><img src="/assets/delete-btn.png" alt="edit" className="btn-icon ml-1.5" />
         </button>
       </div>

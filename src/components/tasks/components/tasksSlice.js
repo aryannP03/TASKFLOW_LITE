@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 const API_URL = "http://localhost:3000/tasks"
 
@@ -54,6 +55,7 @@ const initialState =  {
     error: null,
     selectedTasks: [],
 }
+
 
 
 const tasksSlice = createSlice({

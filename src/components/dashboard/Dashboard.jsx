@@ -18,6 +18,8 @@ function Dashboard() {
 
   
   const { tasks, loading, error, selectedTasks } = useSelector((state) => state.tasks)
+  // console.log(Error);
+  
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -54,7 +56,6 @@ function Dashboard() {
   const deleteTimerRef = useRef(null)
   const deletedTasksRef = useRef([])
   
-  //tasks are being deleted by 5 sec:
   const handleDeleteSelected = () => {
     
     const idtoDelete = [...selectedTasks]
@@ -93,6 +94,12 @@ function Dashboard() {
     duration: 5000
   });
   }
+
+
+  useState(() => {
+    if (error)
+      toast.error("Failed to load tasks. Please try again")
+  }, [error])
 
   return (
     <div className="bg-mainbg min-h-screen w-full">
@@ -133,10 +140,12 @@ function Dashboard() {
 
           {loading && <p>Loading tasks...</p>}
 
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p style={{ color: "red" }}>
+            {error}         
+            </p>}
 
           {!loading && !error && tasks.length === 0 && (
-            <p>No tasks found.</p>
+            <p className="text-xl text-white">No tasks found.</p>
           )}
           
           {!loading && !error && tasks.length > 0 && (

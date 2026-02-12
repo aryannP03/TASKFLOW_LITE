@@ -51,7 +51,7 @@ function Header() {
                     />
                 </button>
                 {showDropDown && (
-                  <div className="absolute top-16 right-0.5 text-xl bg-fuchsia-800 w-50 border-2">
+                  <div className="absolute top-16 right-0.5 text-xl bg-fuchsia-800 w-35 border-2 rounded">
                     <button 
                       className="w-full hover:bg-header-bg border-b-fuchsia-300 border-b-2"
                       onClick={() => navigate('/update-user') }

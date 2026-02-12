@@ -6,6 +6,7 @@ import CommonFormField from "../../common/common-form-fields/CommonFormField";
 import USER_UPDATE from "./constants";
 // import { editUser } from "../usersSlice";
 import { useGetuserbyidQuery, useEdituserbyidMutation } from "../usersSlice2";
+import toast from "react-hot-toast";
 
 function UpdateUser() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function UpdateUser() {
   const currentUser = localStorage.getItem('userId')
   // console.log("curr user is :",currentUser);
   
-  const {data:user} = useGetuserbyidQuery(currentUser)
+  const {data:user, isError} = useGetuserbyidQuery(currentUser)
   const [editUser] = useEdituserbyidMutation()
 
   // const user = useGetuserbyidQuery(currentUser)
@@ -64,8 +65,15 @@ function UpdateUser() {
   const handleUpdate = async (data) => {
     await editUser({ id: user.id, updatedData:data })
     navigate("/dashboard");
-  };
+  }
 
+  useEffect(() => {
+    if (isError) {
+      toast.error("Unable to load your profile. Please try again.")
+    }
+  }, [isError])
+
+  
   return (
     <>
       <div className="min-h-screen flex items-center justify-center px-4 bg-update-form-bg">
@@ -115,6 +123,7 @@ function UpdateUser() {
           </form>
 
         </div>
+              
       </div>
 
     </>

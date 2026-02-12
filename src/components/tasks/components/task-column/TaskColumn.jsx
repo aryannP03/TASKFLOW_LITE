@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskCard from "../task-card/TaskCard";
 import { useDroppable } from "@dnd-kit/core"
-import { SlArrowDown, SlArrowRight } from "react-icons/sl";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 function TaskColumn({ title, tasks, type, setTasks }) {
 
@@ -15,7 +15,7 @@ function TaskColumn({ title, tasks, type, setTasks }) {
           <h3 onClick={() => setIsOpen(prev => !prev)} 
           className=" bg-card-col-head border-2 border-card-col-head-border 
           rounded-2xl max-w-[19rem] h-[4rem] cursor-pointer text-center align-middle  mt-1 mb-4 mx-3.5 text-[1.75rem] font-medium text-white flex items-center justify-center "
-          >{title}{isOpen?<SlArrowDown className="ml-2 size-6" />:<SlArrowRight className="ml-2 size-5"/>}</h3>
+          >{title}{isOpen?<IoMdArrowDropdown className="ml-1.5 size-10 mt-1.5" />:<IoMdArrowDropdown className="ml-2 size-10 rotate-270"/>}</h3>
 
       {isOpen && (
         <>
