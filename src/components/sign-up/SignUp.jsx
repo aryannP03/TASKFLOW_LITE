@@ -5,7 +5,9 @@ import USER_SIGNUP from "../sign-up/constants";
 import { useForm } from "react-hook-form";
 import CommonFormField from "../../common/common-form-fields/CommonFormField";
 import { useDispatch } from "react-redux";
-import { addUser } from "../usersSlice";
+import { useAdduserMutation } from "../usersSlice2";
+// import { addUser } from "../usersSlice";
+
 
 
 function SignupPage() {
@@ -13,6 +15,7 @@ function SignupPage() {
   const { login } = useAuth()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [addUser] = useAdduserMutation()
 
   const {
       control,
@@ -28,8 +31,10 @@ function SignupPage() {
     });
   
   
-    const handleSignup = (data) => {
-      dispatch(addUser(data))
+    const handleSignup = async (data) => {
+      const result = await (addUser(data)).unwrap()
+      console.log("data is : ", result.id);
+      localStorage.setItem("userId", result.id)
       login(data);
       navigate("/dashboard");
       }

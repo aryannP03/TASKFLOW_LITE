@@ -4,13 +4,21 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import CommonFormField from "../../common/common-form-fields/CommonFormField";
 import USER_UPDATE from "./constants";
-import { editUser } from "../usersSlice";
+// import { editUser } from "../usersSlice";
+import { useGetuserbyidQuery, useEdituserbyidMutation } from "../usersSlice2";
 
 function UpdateUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const user = useSelector((state) => state.users.currentUser);
+  
+  const currentUser = localStorage.getItem('userId')
+  // console.log("curr user is :",currentUser);
+  
+  const {data:user} = useGetuserbyidQuery(currentUser)
+  const [editUser] = useEdituserbyidMutation()
+
+  // const user = useGetuserbyidQuery(currentUser)
   console.log("current user data:", user);
   
 
@@ -53,8 +61,8 @@ function UpdateUser() {
     }
   }, [user, reset]);
 
-  const handleUpdate = (data) => {
-    dispatch(editUser({ id: user.id, updatedData:data }));
+  const handleUpdate = async (data) => {
+    await editUser({ id: user.id, updatedData:data })
     navigate("/dashboard");
   };
 

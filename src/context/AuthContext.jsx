@@ -23,6 +23,7 @@ export function AuthProvider({ children }) {
 
     const logout = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('userId')
         setIsAuthenticated(false)
         navigate('/welcome-page')
     }

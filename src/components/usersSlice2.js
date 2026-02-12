@@ -1,3 +1,72 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+
+export const userApi = createApi({
+    reducerPath: 'userApi',
+    baseQuery: fetchBaseQuery({baseUrl: "http://localhost:3000"}),
+    tagTypes: ["User"],
+    
+    endpoints: (builder) => ({
+        
+        fetchUsers: builder.query({
+            query: () => "/users",
+            invalidatesTags: ["User"]
+        }),
+
+        getuserbyid: builder.query({
+            query: (id) => `/users/${id}`,
+            providesTags: ["User"]
+        }),
+
+        edituserbyid: builder.mutation({
+            query: ({id, updatedData}) => ({
+                url: `/users/${id}`,
+                method: 'PATCH',
+                body: updatedData
+            }),
+            invalidatesTags: ["User"]
+        }),
+
+        adduser: builder.mutation({
+            query: (data) => ({
+                url: "/users",
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ["User"]
+        })
+    })
+})
+
+export const { useFetchUsersQuery, useGetuserbyidQuery, useEdituserbyidMutation, useAdduserMutation } = userApi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // const API_URL = "http://localhost:3000/users"
@@ -25,8 +94,6 @@
 
 // export const editUser = createAsyncThunk("editUser", 
 //     async ({ id, updatedData}) => {
-//         console.log(`Id is ${id} and data is ${updatedData}`);
-        
 //         await fetch(`${API_URL}/${id}`, {
 //             method: "PATCH",
 //             headers: {
@@ -54,8 +121,7 @@
 //     reducers: {},
 
 //     extraReducers: (builder) => {
-//         builder
-//         .addCase(fetchUsers.pending, (state) => {
+//         builder.addCase(fetchUsers.pending, (state) => {
 //             state.loading = true
 //             state.error = null
 //         })
@@ -76,14 +142,14 @@
 //             state.currentUser = action.payload
 //         })
 //         .addCase(editUser.fulfilled, (state, action) => {
-//             const { id, updatedData } = action.payload
-//             const user = state.users.find((u) => u.id === id)
+//             const { id, updatedData} = action.payload
+//             const user = state.users.find((u) => u.id===id)
+//             Object.assign(user, updatedData)
 
-//             if (user) {
-//                 Object.assign(user, updatedData)
+//             if (state.currentUser?.id === id) {
+//             Object.assign(state.currentUser, updatedData)
 //             }
-//             })
-
+//         })
 //     }
 // })
 
