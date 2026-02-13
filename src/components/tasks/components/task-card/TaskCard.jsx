@@ -1,35 +1,12 @@
-import React, {useState} from "react";
-import { useDraggable } from "@dnd-kit/core"
+import React from "react";
 import TaskPopup from "../../../../common/modal/TaskPopup";
 import TaskForm from "../task-form/TaskForm";
-import { CSS } from "@dnd-kit/utilities"
-import { useDispatch, useSelector } from "react-redux";
-import { toggleTaskSelection, deleteTask, editTask } from "../tasksSlice"
-import toast from "react-hot-toast";
-// import UseEditTask from "../../../../hooks/useEditTask";
+import useTasks from "../../hooks/useTasks";
 
-function TaskCard({ task, setTasks }) {
-
-  const dispatch = useDispatch()
-  const selectedTasks = useSelector(state => state.tasks.selectedTasks)
+function TaskCard({ task }) {
   
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: task.id,
-  })
-
-  const style = {
-    transform: CSS.Translate.toString(transform),
-  };
-
-  const [showEditPopup, setShowEditPopup] = useState(false)
-  // const { editTask } = UseEditTask(setTasks)
-
-  const handleEditSubmit = (updatedData) => {
-    // editTask(task.id, updatedData)
-    dispatch(editTask({id: task.id, updatedData}))
-    setShowEditPopup(false)
-  }
-
+  const { selectedTasks, attributes, listeners, setNodeRef, showEditPopup, handleEditSubmit, handleSelectTask, 
+    handleDeleteSelectedTasks, style, setShowEditPopup } = useTasks(task)
 
   return (
     <div
@@ -45,10 +22,9 @@ function TaskCard({ task, setTasks }) {
 
       <input type="checkbox" name="selectTask" id="selectTask" className="absolute right-3 size-4"
         checked={selectedTasks.includes(task.id)}
-        onChange={() => dispatch(toggleTaskSelection(task.id))}
+        onChange={() => handleSelectTask()}
       />
 
-      {/* {console.log("this is task:", task)} */}
       <h4 className="task-title">{task.title}</h4>
       <p className={`priority ${task.priority}`}>Priority: {task.priority}</p>
       <p className="due-date">Due Date: {task.dueDate}</p>
@@ -62,9 +38,7 @@ function TaskCard({ task, setTasks }) {
         </button>
         <button
           className="delete-btn"
-          onClick={() => {
-            dispatch(deleteTask(task.id))
-            toast.success("Task Deleted")}} 
+          onClick={() => handleDeleteSelectedTasks()} 
         ><img src="/assets/delete-btn.png" alt="edit" className="btn-icon ml-1.5" />
         </button>
       </div>

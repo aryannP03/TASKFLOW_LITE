@@ -1,78 +1,15 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import CommonFormField from "../../common/common-form-fields/CommonFormField";
 import USER_UPDATE from "./constants";
-// import { editUser } from "../usersSlice";
 import { useGetuserbyidQuery, useEdituserbyidMutation } from "../usersSlice2";
 import toast from "react-hot-toast";
+import useUpdateUser from "./hooks/useUpdateUser";
 
 function UpdateUser() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  
-  const currentUser = localStorage.getItem('userId')
-  // console.log("curr user is :",currentUser);
-  
-  const {data:user, isError} = useGetuserbyidQuery(currentUser)
-  const [editUser] = useEdituserbyidMutation()
-
-  // const user = useGetuserbyidQuery(currentUser)
-  console.log("current user data:", user);
-  
-
-  const {
-    control,
-    handleSubmit,
-    reset,
-  } = useForm({
-    defaultValues: {
-      email: "",
-      username: "",
-      phone: "",
-      above18: false,
-      gender: "",
-      address: "",
-      zipcode: "",
-      state: "",
-      dob: "",
-      fullname: "",
-      
-    },
-  });
-
-  useEffect(() => {
-    if (user) {
-      reset({
-        email: user.email,        
-        username: user.username,
-        phone: user.phone,
-        above18: user.above18,
-        gender: user.gender,
-        address: user.address,
-        zipcode: user.zipcode,
-        state: user.state,
-        dob: user.dob,
-        fullname: user.fullname,
-
-        
-      });
-    }
-  }, [user, reset]);
-
-  const handleUpdate = async (data) => {
-    await editUser({ id: user.id, updatedData:data })
-    navigate("/dashboard");
-  }
-
-  useEffect(() => {
-    if (isError) {
-      toast.error("Unable to load your profile. Please try again.")
-    }
-  }, [isError])
-
+  const { user, isError, control, handleSubmit, handleUpdate } = useUpdateUser()
   
   return (
     <>

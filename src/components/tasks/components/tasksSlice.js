@@ -71,12 +71,8 @@ const tasksSlice = createSlice({
             } else {
             state.selectedTasks.push(id)
             }
-            console.log("Current selected tasks are:", state.selectedTasks);
             
         },
-        // toggleTaskCards: (state, action) => {
-        //     const []
-        // }
     },
     
     extraReducers: (builder) => {
@@ -86,7 +82,7 @@ const tasksSlice = createSlice({
         })
         .addCase(fetchTasks.rejected, (state, action) => {
             state.loading = false
-            state.error = action.payload
+            state.error = action.error.message
         })
         .addCase(fetchTasks.fulfilled, (state, action) => {
             state.loading = false
