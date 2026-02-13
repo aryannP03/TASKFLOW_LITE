@@ -14,7 +14,19 @@ function App() {
   const isOnline = useIsOnline()
 
   useEffect( () => {
-    if(!isOnline) toast.error("User is offline")
+    if(!isOnline) 
+      toast(
+      () => (
+        <div className="flex items-center gap-4">
+          <span>You are offline</span>
+          <button
+            className="text-amber-400 font-semibold hover:underline">
+            Retry
+          </button>
+        </div>
+      ),
+      { duration: 8000 }
+    );
   },[isOnline])
 
 

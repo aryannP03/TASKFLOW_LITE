@@ -26,7 +26,7 @@ function TaskForm({ onSubmit, initialData = {}}) {
 
   return (
       <div>  
-        <form className=" bg-black p-4 flex flex-col gap-[1.25rem] text-white w-[25rem] h-[26rem] rounded-xl " 
+        <form className=" bg-black p-4 flex flex-col gap-[1.25rem] text-white w-[25rem] h-[26rem] rounded-xl z-50 " 
         onSubmit={handleSubmit(onSubmit)}>
           <h3 className="add-task-head items-center">
             {initialData?.id? "Edit task": "Add task"}

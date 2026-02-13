@@ -16,7 +16,7 @@ function TaskCard({ task }) {
       bg-[radial-gradient(circle_500px_at_50%_-80%,#461446,#2C063F,#A419A7)]
       text-white rounded-xl py-[1.25rem] px-[0.87rem] mb-3 border border-gray-200 
       transition-transform transition-shadow duration-150 ease-in-out relative
-      hover:-translate-y-0.75 hover:shadow-[0_0.5rem_1.25rem_rgba(0,0,0,0.08)] min-h-[12rem]">
+      hover:shadow-[0_0.5rem_1.25rem_rgba(0,0,0,0.08)] min-h-[12rem]">
 
       <div {...listeners} {...attributes} className="inline-block cursor-grab text-white">☰</div>
 
