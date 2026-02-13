@@ -3,7 +3,7 @@ import TaskCard from "../task-card/TaskCard";
 import { useDroppable } from "@dnd-kit/core"
 import { IoMdArrowDropdown } from "react-icons/io";
 
-function TaskColumn({ title, tasks, type, setTasks }) {
+function TaskColumn({ title, tasks, type }) {
 
   const [isOpen, setIsOpen] = useState(true)
   
@@ -22,7 +22,7 @@ function TaskColumn({ title, tasks, type, setTasks }) {
         {tasks.length === 0 && <p className="text-gray-400 text-[0.9rem] text-center">No tasks</p>}
 
         {tasks?.map((task) => (
-          <TaskCard key={task.id} task={task} setTasks={setTasks} />               
+          <TaskCard task={task} />               
         ))}
         </>
       )}

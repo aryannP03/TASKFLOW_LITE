@@ -6,38 +6,14 @@ import { useForm } from "react-hook-form";
 import CommonFormField from "../../common/common-form-fields/CommonFormField";
 import { useDispatch } from "react-redux";
 import { useAdduserMutation } from "../usersSlice2";
+import useSignUp from "./hooks/useSignUp";
 // import { addUser } from "../usersSlice";
 
 
 
 function SignupPage() {
 
-  const { login } = useAuth()
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const [addUser] = useAdduserMutation()
-
-  const {
-      control,
-      handleSubmit,
-    } = useForm({
-      defaultValues: {
-        email: "",
-        password: "",
-        username: "",
-        above18: false,
-        phone: ""
-      },
-    });
-  
-  
-    const handleSignup = async (data) => {
-      const result = await (addUser(data)).unwrap()
-      console.log("data is : ", result.id);
-      localStorage.setItem("userId", result.id)
-      login(data);
-      navigate("/dashboard");
-      }
+    const { control, handleSubmit, handleLogin, handleSignup } = useSignUp() 
   
 
   return (

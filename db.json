@@ -17,14 +17,6 @@
       "status": "todo"
     },
     {
-      "id": "2d44",
-      "title": "task-test",
-      "priority": "medium",
-      "dueDate": "2026-02-21",
-      "assignee": "Aryan",
-      "status": "done"
-    },
-    {
       "id": "749c",
       "title": "task1",
       "priority": "low",
@@ -647,6 +639,50 @@
       "username": "testusr3",
       "above18": true,
       "phone": "112233445566"
+    },
+    {
+      "id": "1aab",
+      "email": "asd@cvb",
+      "password": "werty",
+      "username": "test45",
+      "above18": true,
+      "phone": "1111111111"
+    },
+    {
+      "id": "ea28",
+      "email": "test@xyz",
+      "password": "asdd",
+      "username": "testusr3",
+      "above18": true,
+      "phone": "1234567890",
+      "gender": "male",
+      "address": "aswert",
+      "zipcode": "123432",
+      "state": "MP",
+      "dob": "11/10/2003",
+      "fullname": "Aryan"
+    },
+    {
+      "id": "33d8",
+      "email": "a",
+      "password": "aswq",
+      "username": "a",
+      "above18": true,
+      "phone": "1234567890",
+      "gender": "male",
+      "address": "aswer",
+      "zipcode": "123421",
+      "state": "MP",
+      "dob": "11/10/2203",
+      "fullname": "Aryan22"
+    },
+    {
+      "id": "d7ef",
+      "email": "asd@cvb",
+      "password": "abs",
+      "username": "testusr3",
+      "above18": true,
+      "phone": "1112223334"
     }
   ]
 }

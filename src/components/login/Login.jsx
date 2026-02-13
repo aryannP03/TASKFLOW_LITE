@@ -1,28 +1,10 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import USER_LOGIN from "./constants";
 import CommonFormField from "../../common/common-form-fields/CommonFormField";
+import useLogin from "./hooks/useLogin";
 
 function LoginPage() {
-  const { login } = useAuth();
-  const navigate = useNavigate();
 
-  const {
-    control,
-    handleSubmit,
-  } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-
-  const handleLogin = (data) => {
-    login(data);
-    navigate("/dashboard");
-  };
+  const { control, handleSubmit, handleLogin } = useLogin()
 
   return (
     <>

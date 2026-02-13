@@ -71,12 +71,8 @@ const tasksSlice = createSlice({
             } else {
             state.selectedTasks.push(id)
             }
-            console.log("Current selected tasks are:", state.selectedTasks);
             
         },
-        // toggleTaskCards: (state, action) => {
-        //     const []
-        // }
     },
     
     extraReducers: (builder) => {
