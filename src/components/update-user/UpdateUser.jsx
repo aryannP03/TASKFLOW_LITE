@@ -20,7 +20,7 @@ function UpdateUser() {
   const [editUser] = useEdituserbyidMutation()
 
   // const user = useGetuserbyidQuery(currentUser)
-  console.log("current user data:", user);
+  // console.log("current user data:", user);
   
 
   const {

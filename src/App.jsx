@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import Dashboard from "./components/dashboard/Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -6,10 +6,18 @@ import ProtectedRoutes from './utils/ProtectedRoutes';
 import LoginPage from './components/login/Login';
 import WelcomePage from './components/welcome-page/WelcomePage';
 import UpdateUser from './components/update-user/UpdateUser';
-import { Toaster } from "react-hot-toast";
-
+import toast, { Toaster } from "react-hot-toast";
+import useIsOnline from './hooks/useIsOnline';
 
 function App() {
+
+  const isOnline = useIsOnline()
+
+  useEffect( () => {
+    if(!isOnline) toast.error("User is offline")
+  },[isOnline])
+
+
   return (
     <>
     <Toaster
@@ -23,8 +31,7 @@ function App() {
           }
         }}
       />
-
-
+      
     <Routes>
       <Route path="/login" 
       element={<LoginPage />} />

@@ -21,7 +21,7 @@ function TaskColumn({ title, tasks, type, setTasks }) {
         <>
         {tasks.length === 0 && <p className="text-gray-400 text-[0.9rem] text-center">No tasks</p>}
 
-        {tasks.map((task) => (
+        {tasks?.map((task) => (
           <TaskCard key={task.id} task={task} setTasks={setTasks} />               
         ))}
         </>

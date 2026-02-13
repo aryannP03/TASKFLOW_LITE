@@ -86,7 +86,7 @@ const tasksSlice = createSlice({
         })
         .addCase(fetchTasks.rejected, (state, action) => {
             state.loading = false
-            state.error = action.payload
+            state.error = action.error.message
         })
         .addCase(fetchTasks.fulfilled, (state, action) => {
             state.loading = false
