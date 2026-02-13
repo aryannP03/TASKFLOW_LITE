@@ -16,7 +16,7 @@ function Header() {
   
     return (
     <>
-      <div className="bg-header-bg align-middle text-header-text sticky top-0">  
+      <div className="bg-header-bg align-middle text-header-text sticky top-0 z-100">  
         <nav className="flex items-start w-full px-6 sm:flex-row h-20 ">
           <h1 className="mt-6 flex items-center mr-auto gap-2 text-xl font-extrabold sm:text-2xl">TaskFlow Lite</h1>
 
