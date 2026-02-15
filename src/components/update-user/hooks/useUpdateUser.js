@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useGetuserbyidQuery, useEdituserbyidMutation } from "../../usersSlice2";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import toast from "react-hot-toast"
 
 function useUpdateUser() {
     
