@@ -24,14 +24,15 @@ function Header() {
             <div
             className="flex gap-4 mt-7 md:mt-4">
               <button 
-                className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
+                className="px-3 py-1.5 text-base font-medium bg-save-update-btn hover:brightness-75 text-white rounded-lg cursor-pointer
+                         active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
                 onClick={() => setShowLoginPopup(true)}>
                 Login
               </button>
 
               <button 
-              className= "px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
+              className="px-3 py-1.5 text-base font-medium bg-save-update-btn hover:brightness-75 text-white rounded-lg cursor-pointer
+                         active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
               onClick={() => setShowSignUpPopup(true)}>
                 Signup
               </button>
