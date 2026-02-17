@@ -1,7 +1,7 @@
 import {useState, useRef} from 'react'
 
 function UseCarousel() {
-    const cards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+    const cards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
       const [activeIndex, setActiveIndex] = useState(0)
       const [dragOffset, setDragOffset] = useState(0)
     
@@ -12,10 +12,12 @@ function UseCarousel() {
         const offset = index - activeIndex;
         const absoluteVal = Math.abs(offset);
     
-        if (absoluteVal > 3) return { opacity: 0 }
+        if (absoluteVal > 4) return { opacity: 0 }
     
         return {
-          transform: `translateX(${offset * 130 + dragOffset}px) scale(${1 - absoluteVal * 0.08}) rotateY(${offset * -15}deg)`,
+          transform: `translateX(${(offset * 135) + dragOffset}px) 
+          scale(${1 - absoluteVal * 0.08}) 
+          rotateY(${(absoluteVal>2)? offset * 12 :offset * 25}deg)`,
           opacity: 1 - absoluteVal * 0.2,
           zIndex: 10 - absoluteVal,
           transition: isDragging.current ? "none" : "all 0.35s ease"
@@ -47,9 +49,9 @@ function UseCarousel() {
       const handleMouseUp = () => {
         isDragging.current = false
     
-        if (dragOffset > 70) {
+        if (dragOffset > 30) {
           handlePrev()
-        } else if (dragOffset < -70) {
+        } else if (dragOffset < -30) {
           handleNext()
         }
         setDragOffset(0)

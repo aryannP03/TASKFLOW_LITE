@@ -10,7 +10,7 @@ function Customcarousel() {
 
   return (
     <div
-      className="relative h-[420px] mt-10 flex items-center justify-center overflow-hidden [perspective:1000px]"
+      className="relative h-105 mt-10 flex items-center justify-center overflow-hidden perspective-[1000px]"
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
@@ -24,7 +24,7 @@ function Customcarousel() {
       </button>
 
       <div
-        className="relative w-full h-full flex items-center justify-center"
+        className="relative w-[900px] h-full flex items-center justify-center"
         onMouseDown={handleMouseDown}
       >
         {cards.map((num, index) => (
