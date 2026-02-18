@@ -2,7 +2,7 @@ import {useState, useRef} from 'react'
 
 function UseCarousel() {
     const cards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
-      const [activeIndex, setActiveIndex] = useState(0)
+      const [activeIndex, setActiveIndex] = useState(4)
       const [dragOffset, setDragOffset] = useState(0)
     
       const start = useRef(0)
