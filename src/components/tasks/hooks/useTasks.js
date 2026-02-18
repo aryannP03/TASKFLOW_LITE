@@ -32,6 +32,8 @@ function useTasks(task) {
         toast.success("Task Deleted")
     }
 
+    
+
     return { selectedTasks, attributes, listeners, setNodeRef, showEditPopup, setShowEditPopup, handleEditSubmit, 
         handleSelectTask, handleDeleteSelectedTasks, style }
 }

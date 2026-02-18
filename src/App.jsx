@@ -1,21 +1,23 @@
 import { useEffect } from 'react'
 import './App.css'
 import Dashboard from "./components/dashboard/Dashboard";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import ProtectedRoutes from './utils/ProtectedRoutes';
 import LoginPage from './components/login/Login';
 import WelcomePage from './components/welcome-page/WelcomePage';
 import UpdateUser from './components/update-user/UpdateUser';
 import toast, { Toaster } from "react-hot-toast";
 import useIsOnline from './hooks/useIsOnline';
+import OfflinePage from './common/offline-page';
 
 function App() {
 
-  const isOnline = useIsOnline()
+  const { isOnline, handleRetry } = useIsOnline()
+  const navigate = useNavigate()
 
-  useEffect( () => {
-    if(!isOnline) toast.error("User is offline")
-  },[isOnline])
+  if (!isOnline) {
+  return <OfflinePage onRetry={handleRetry} />;
+}
 
 
   return (
@@ -41,6 +43,9 @@ function App() {
       
       <Route path="/welcome-page" 
       element={<WelcomePage />} />
+
+      {/* <Route path="/offline-page" 
+      element={<OfflinePage />} /> */}
       
       <Route element={<ProtectedRoutes />}> 
         <Route path="/dashboard" element={<Dashboard />} />

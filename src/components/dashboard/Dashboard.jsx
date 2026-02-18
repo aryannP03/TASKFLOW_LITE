@@ -8,6 +8,7 @@ import Header from "../../common/header/Header";
 import "./style/index.css"
 import TaskBoardSkeleton from "../tasks/components/skeleton";
 import useDashboard from "./hooks/useDashboard";
+import Customcarousel from "../carousel";
 
 function Dashboard() {
 
@@ -41,6 +42,10 @@ function Dashboard() {
           onClick={() => setShowPopup(true)}>
             + Add Task
           </button>
+        </div>
+
+        <div>
+          <Customcarousel />
         </div>
 
         <div>

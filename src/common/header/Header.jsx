@@ -16,7 +16,7 @@ function Header() {
   
     return (
     <>
-      <div className="bg-header-bg align-middle text-header-text sticky top-0">  
+      <div className="bg-header-bg align-middle text-header-text sticky top-0 z-100">  
         <nav className="flex items-start w-full px-6 sm:flex-row h-20 ">
           <h1 className="mt-6 flex items-center mr-auto gap-2 text-xl font-extrabold sm:text-2xl">TaskFlow Lite</h1>
 
@@ -24,14 +24,15 @@ function Header() {
             <div
             className="flex gap-4 mt-7 md:mt-4">
               <button 
-                className="px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium
-                        hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
+                className="px-3 py-1.5 text-base font-medium bg-save-update-btn hover:brightness-75 text-white rounded-lg cursor-pointer
+                         active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
                 onClick={() => setShowLoginPopup(true)}>
                 Login
               </button>
 
               <button 
-              className= "px-3 py-1.5 text-base rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
+              className="px-3 py-1.5 text-base font-medium bg-save-update-btn hover:brightness-75 text-white rounded-lg cursor-pointer
+                         active:scale-95 transition sm:text-xl sm:px-6 sm:py-3"
               onClick={() => setShowSignUpPopup(true)}>
                 Signup
               </button>
